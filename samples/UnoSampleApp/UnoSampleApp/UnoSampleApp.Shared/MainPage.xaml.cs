@@ -1,22 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace UnoSampleApp
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Windows.UI.Xaml.Controls;
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -25,6 +12,46 @@ namespace UnoSampleApp
         public MainPage()
         {
             this.InitializeComponent();
+            this.BasicGridView.ItemsSource = this.cats;
+            this.BaseExample.ItemsSource = this.cats;
+        }
+
+        // List of cats
+        private readonly List<string> cats = new List<string>()
+        {
+            "Abyssinian",
+            "Aegean",
+            "Bobtail",
+            "Curl",
+            "Ringtail",
+            "Shorthair",
+            "Wirehair",
+            "Aphrodite Giant",
+            "Arabian Mau"
+        };
+
+        // Handle text change and present suitable items
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            string[] splitText = sender.Text.ToLower().Split(' ');
+            var suitableItems = (from cat in this.cats
+                let found = splitText.All(key => cat.ToLower().Contains(key))
+                where found
+                select cat).ToList();
+
+            if (suitableItems.Count == 0)
+            {
+                suitableItems.Add("No results found");
+            }
+
+            sender.ItemsSource = suitableItems;
+        }
+
+        // Handle user selecting an item, in our case just output the selected item.
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
+            AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            sender.Text = args.SelectedItem.ToString();
         }
     }
 }
