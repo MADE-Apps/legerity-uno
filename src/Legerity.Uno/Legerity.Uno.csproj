@@ -9,6 +9,7 @@
       - 
     </Description>
     <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI Uno Platform Android iOS WebAssembly</PackageTags>
+    <RootNamespace>Legerity.Uno</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
