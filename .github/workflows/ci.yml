@@ -2,7 +2,7 @@ name: CI
 
 on:
   create:
-    branches: 
+    branches:
       - release/**
   push:
     branches:
@@ -24,7 +24,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'src/Legerity.sln'
+      SOLUTION: 'src/Legerity.Uno.sln'
 
     runs-on: ubuntu-latest
 
