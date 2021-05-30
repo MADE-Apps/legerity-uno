@@ -21,7 +21,12 @@
   <ItemGroup>
     <Folder Include="Android\" />
     <Folder Include="iOS\" />
-    <Folder Include="Web\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Tools\Edge\MicrosoftWebDriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

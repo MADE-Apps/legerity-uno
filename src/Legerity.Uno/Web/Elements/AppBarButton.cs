@@ -11,6 +11,11 @@ namespace Legerity.Uno.Web.Elements
     public class AppBarButton : Button
     {
         /// <summary>
+        /// Defines the Windows type for the <see cref="AppBarButton"/>.
+        /// </summary>
+        public const string WindowsType = "Windows.UI.Xaml.Controls.AppBarButton";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AppBarButton"/> class.
         /// </summary>
         /// <param name="element">
