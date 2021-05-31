@@ -2,6 +2,8 @@ namespace Legerity.Uno.Extensions
 {
     using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
@@ -29,7 +31,7 @@ namespace Legerity.Uno.Extensions
         /// <summary>
         /// Finds the first Uno Platform web element under the given element that matches the given x:Name value.
         /// <para>
-        /// To find elements with this method, set the following in your App.xaml.cs.
+        /// To find elements with this method for web applications, set the following in your App.xaml.cs.
         /// <code>
         /// Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlName = true;
         /// </code>
@@ -38,9 +40,19 @@ namespace Legerity.Uno.Extensions
         /// <param name="element">The web element.</param>
         /// <param name="name">The x:Name of the element to find.</param>
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
-        public static RemoteWebElement FindWebElementByXamlName(this RemoteWebElement element, string name)
+        public static RemoteWebElement FindElementByXamlName(this RemoteWebElement element, string name)
         {
-            return element.FindElement(By.XPath($".//*[@xamlname='{name}']")) as RemoteWebElement;
+            return UnoAppManager.App switch
+            {
+                IOSDriver<IOSElement> _ =>
+                    element.FindElement(By.Name(name)) as RemoteWebElement,
+                AndroidDriver<AndroidElement> _ =>
+                    element.FindElement(By.Name(name)) as RemoteWebElement,
+                WindowsDriver<WindowsElement> _ =>
+                    element.FindElement(By.Name(name)) as RemoteWebElement,
+                _ =>
+                    element.FindElement(By.XPath($".//*[@xamlname='{name}']")) as RemoteWebElement
+            };
         }
 
         /// <summary>
