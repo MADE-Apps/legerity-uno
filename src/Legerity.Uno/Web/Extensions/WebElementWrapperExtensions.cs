@@ -10,5 +10,15 @@ namespace Legerity.Uno.Web.Extensions
         {
             return element.FindElement(By.XPath($".//*[@xamltype='{xamlType}']"));
         }
+
+        public static RemoteWebElement FindElementByAutomationId(this WebElementWrapper element, string automationId)
+        {
+            return element.FindElement(By.XPath($".//*[@xuid='{automationId}']"));
+        }
+
+        public static RemoteWebElement FindElementByXamlName(this WebElementWrapper element, string name)
+        {
+            return element.FindElement(By.XPath($".//*[@xamlname='{name}']"));
+        }
     }
 }

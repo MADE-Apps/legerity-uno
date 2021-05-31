@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,6 +42,10 @@ namespace UnoSampleApp
 
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
+#endif
+
+#if __WASM__
+            Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlName = true;
 #endif
         }
 

@@ -9,5 +9,15 @@ namespace Legerity.Uno.Web.Extensions
         {
             return driver.FindElement(By.XPath($".//*[@xamltype='{xamlType}']")) as RemoteWebElement;
         }
+
+        public static RemoteWebElement FindElementByAutomationId(this RemoteWebDriver driver, string automationId)
+        {
+            return driver.FindElement(By.XPath($".//*[@xuid='{automationId}']")) as RemoteWebElement;
+        }
+
+        public static RemoteWebElement FindElementByXamlName(this RemoteWebDriver driver, string name)
+        {
+            return driver.FindElement(By.XPath($".//*[@xamlname='{name}']")) as RemoteWebElement;
+        }
     }
 }
