@@ -19,7 +19,7 @@ As many developers know, projects like Legerity for Uno Platform are built and m
 
 ## Installation 💾
 
-Legerity for Uno is publicly available via NuGet. Each available package is detailed below.
+Legerity for Uno Platform is publicly available via NuGet. Each available package is detailed below.
 
 | Package | Current | Preview |
 | ------ | ------ | ------ |
@@ -27,15 +27,15 @@ Legerity for Uno is publicly available via NuGet. Each available package is deta
 
 ## Documentation 📃
 
-If you want to deep dive into the Legerity for Uno library with details on how to use the features, you can browse the [documentation](https://made-apps.github.io/legerity-uno/) for help getting up and running!
+If you want to deep dive into the Legerity for Uno Platform library with details on how to use the features, you can browse the [documentation](https://made-apps.github.io/legerity-uno/) for help getting up and running!
 
 ## Contributing 🚀
 
 Looking to help build Legerity for Uno Platform? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
 
-## Building Legerity for Uno 🛠
+## Building Legerity for Uno Platform 🛠
 
-Legerity for Uno is built using .NET Standard, taking advantage of the new SDK-style projects.
+Legerity for Uno Platform is built using .NET Standard, taking advantage of the new SDK-style projects.
 
 You can build the solution using Visual Studio with the following workloads installed:
 
