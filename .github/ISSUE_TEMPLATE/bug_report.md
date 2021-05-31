@@ -13,13 +13,18 @@ assignees: ''
 ## What is the expected behavior?
 <!-- Please describe below the expected behavior -->
 
+## Platforms affected
+<!-- Please check the platforms that are affected -->
+
+- [ ] iOS
+- [ ] Android
+- [ ] WebAssembly
+
 ## Additional detail
 
 Package(s): 
 
 Package Version(s): 
-
-Platform(s) affected: 
 
 ## Other information
 <!-- Please provide any additional information, links, screenshots, or projects with reproduced issues below if applicable -->
