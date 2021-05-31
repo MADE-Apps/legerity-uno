@@ -1,14 +1,14 @@
 <img src="assets/ProjectBanner.png" alt="Legerity for Uno project banner" />
 
-# Legerity for Uno
+# Legerity for Uno Platform
 
-Built on top of the [Legerity UI testing framework](https://github.com/MADE-Apps/legerity), this library is to be used with Android, iOS, and Web applications built with the Uno Platform rendered cross-platform elements.
+Built on top of the [Legerity UI testing framework](https://github.com/MADE-Apps/legerity), this library is to be used with Android, iOS, and Web applications built with the Uno Platform (www.platform.uno) rendered cross-platform elements.
 
-Legerity for Uno provides the best experience for building maintainable UI automation with speed for Uno Platform applications.
+Legerity for Uno Platform provides the best experience for building maintainable UI automation with speed for Uno Platform applications.
 
-## Support Legerity for Uno ♥
+## Support Legerity for Uno Platform♥
 
-As many developers know, projects like Legerity for Uno are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub. 
+As many developers know, projects like Legerity for Uno Platform are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub. 
 
 ## Build Status
 
@@ -31,7 +31,7 @@ If you want to deep dive into the Legerity for Uno library with details on how t
 
 ## Contributing 🚀
 
-Looking to help build Legerity for Uno? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
+Looking to help build Legerity for Uno Platform? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
 
 ## Building Legerity for Uno 🛠
 
@@ -44,4 +44,4 @@ You can build the solution using Visual Studio with the following workloads inst
 
 ## License
 
-Legerity for Uno is made available under the terms and conditions of the [MIT license](LICENSE).
+Legerity for Uno Platform is made available under the terms and conditions of the [MIT license](LICENSE).
