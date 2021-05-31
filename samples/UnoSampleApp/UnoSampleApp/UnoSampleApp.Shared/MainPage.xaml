@@ -15,6 +15,7 @@
                 Icon="Add"
                 Label="Add" />
             <AppBarToggleButton
+                x:Name="SymbolIcon"
                 x:Uid="SampleAppBarToggleButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleAppBarToggleButton"
