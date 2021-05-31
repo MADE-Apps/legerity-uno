@@ -7,6 +7,9 @@ namespace Legerity.Uno
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
 
+    /// <summary>
+    /// Defines a manager for the application under test.
+    /// </summary>
     public static class UnoAppManager
     {
         /// <summary>

@@ -9,6 +9,11 @@ namespace Legerity.Uno.Elements
     public class Button : UnoElementWrapper
     {
         /// <summary>
+        /// Defines the Windows type for the <see cref="Button"/>.
+        /// </summary>
+        public const string WindowsType = "Windows.UI.Xaml.Controls.Button";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Button"/> class.
         /// </summary>
         /// <param name="element">
