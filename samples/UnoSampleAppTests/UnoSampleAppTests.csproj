@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,11 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Legerity.Uno\Legerity.Uno.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Android\" />
-    <Folder Include="iOS\" />
   </ItemGroup>
 
   <ItemGroup>

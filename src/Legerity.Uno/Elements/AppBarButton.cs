@@ -1,12 +1,10 @@
-namespace Legerity.Uno.Web.Elements
+namespace Legerity.Uno.Elements
 {
-    using Legerity.Web.Elements.Core;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Remote;
 
     /// <summary>
-    /// Defines a <see cref="AppiumWebElement"/> wrapper for the core AppBarButton control.
+    /// Defines a <see cref="RemoteWebElement"/> wrapper for the core AppBarButton control.
     /// </summary>
     public class AppBarButton : Button
     {

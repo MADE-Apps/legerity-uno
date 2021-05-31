@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="aa4b2612-9c5f-4d99-826b-a1e36eea1018"
+    Name="com.madeapps.unosampleapp"
     Publisher="CN=jmcro"
     Version="1.0.0.0" />
 
@@ -15,7 +15,7 @@
 
   <Properties>
     <DisplayName>UnoSampleApp</DisplayName>
-    <PublisherDisplayName>UnoSampleApp</PublisherDisplayName>
+    <PublisherDisplayName>MADE Apps</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
