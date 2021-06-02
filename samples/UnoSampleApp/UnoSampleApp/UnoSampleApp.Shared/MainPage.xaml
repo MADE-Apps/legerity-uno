@@ -198,6 +198,13 @@
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTextBox"
                 AutomationProperties.Name="simple TextBox" />
+            <TextBox
+                x:Uid="SampleReadonlyTextBox"
+                Margin="0,0,0,12"
+                AutomationProperties.AutomationId="SampleReadonlyTextBox"
+                AutomationProperties.Name="simple readonly TextBox"
+                IsReadOnly="True" />
+
             <TimePicker
                 x:Uid="SampleTimePicker"
                 Margin="0,0,0,12"
