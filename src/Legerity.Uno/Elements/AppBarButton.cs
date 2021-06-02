@@ -1,3 +1,6 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace Legerity.Uno.Elements
 {
     using OpenQA.Selenium;
@@ -11,7 +14,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Defines the Windows type for the <see cref="AppBarButton"/>.
         /// </summary>
-        public const string WindowsType = "Windows.UI.Xaml.Controls.AppBarButton";
+        public new const string WindowsType = "Windows.UI.Xaml.Controls.AppBarButton";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AppBarButton"/> class.
