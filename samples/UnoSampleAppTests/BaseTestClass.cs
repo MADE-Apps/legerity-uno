@@ -1,12 +1,15 @@
 namespace UnoSampleAppTests
 {
-    using System.Collections.Generic;
     using Legerity;
     using Legerity.Uno;
     using NUnit.Framework;
 
     public abstract class BaseTestClass
     {
+        public const string WasmApplication = "http://localhost:5000";
+
+        public const string WindowsApplication = "com.madeapps.unosampleapp_7mzr475ysvhxg!App";
+
         protected BaseTestClass(AppManagerOptions options)
         {
             this.Options = new UnoAppManagerOptions(options);

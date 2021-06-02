@@ -24,9 +24,9 @@ namespace UnoSampleAppTests.Tests
                 WebAppDriverType.Edge,
                 Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
             {
-                Maximize = true, Url = "http://localhost:49247", ImplicitWait = TimeSpan.FromSeconds(10)
+                Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
             },
-            new WindowsAppManagerOptions("com.madeapps.unosampleapp_7mzr475ysvhxg!App")
+            new WindowsAppManagerOptions(WindowsApplication)
             {
                 DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true, Maximize = true
             }
