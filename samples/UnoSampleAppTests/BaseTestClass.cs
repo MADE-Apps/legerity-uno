@@ -3,6 +3,7 @@ namespace UnoSampleAppTests
     using Legerity;
     using Legerity.Uno;
     using NUnit.Framework;
+    using OpenQA.Selenium.Remote;
 
     public abstract class BaseTestClass
     {
@@ -14,7 +15,9 @@ namespace UnoSampleAppTests
         {
             this.Options = new UnoAppManagerOptions(options);
         }
-        
+
+        protected static RemoteWebDriver App => UnoAppManager.App;
+
         private UnoAppManagerOptions Options { get; }
 
         [SetUp]

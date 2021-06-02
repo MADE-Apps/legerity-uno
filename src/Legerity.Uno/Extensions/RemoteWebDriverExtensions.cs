@@ -3,7 +3,6 @@
 
 namespace Legerity.Uno.Extensions
 {
-    using Legerity.Windows.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -28,7 +27,7 @@ namespace Legerity.Uno.Extensions
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
         public static RemoteWebElement FindWebElementByXamlType(this RemoteWebDriver driver, string xamlType)
         {
-            return driver.FindElement(By.XPath($".//*[@xamltype='{xamlType}']")) as RemoteWebElement;
+            return driver.FindElement(ByExtensions.WebXamlType(xamlType)) as RemoteWebElement;
         }
 
         /// <summary>
@@ -54,7 +53,7 @@ namespace Legerity.Uno.Extensions
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(By.Name(name)) as RemoteWebElement,
                 _ =>
-                    driver.FindElement(By.XPath($".//*[@xamlname='{name}']")) as RemoteWebElement
+                    driver.FindElement(ByExtensions.WebXamlName(name)) as RemoteWebElement
             };
         }
 
@@ -75,9 +74,9 @@ namespace Legerity.Uno.Extensions
             return driver switch
             {
                 WindowsDriver<WindowsElement> _ =>
-                    driver.FindElement(ByExtensions.AutomationId(automationId)) as RemoteWebElement,
+                    driver.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
-                    driver.FindElement(By.XPath($".//*[@xuid='{automationId}']")) as RemoteWebElement
+                    driver.FindElement(ByExtensions.WebXamlId(automationId)) as RemoteWebElement
             };
         }
     }
