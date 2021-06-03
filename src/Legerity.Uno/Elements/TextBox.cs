@@ -3,7 +3,6 @@ namespace Legerity.Uno.Elements
     using System;
     using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -58,20 +57,6 @@ namespace Legerity.Uno.Elements
         /// The <see cref="TextBox"/>.
         /// </returns>
         public static implicit operator TextBox(RemoteWebElement element)
-        {
-            return new TextBox(element);
-        }
-
-        /// <summary>
-        /// Allows conversion of a <see cref="AppiumWebElement"/> to the <see cref="TextBox"/> without direct casting.
-        /// </summary>
-        /// <param name="element">
-        /// The <see cref="AppiumWebElement"/>.
-        /// </param>
-        /// <returns>
-        /// The <see cref="TextBox"/>.
-        /// </returns>
-        public static implicit operator TextBox(AppiumWebElement element)
         {
             return new TextBox(element);
         }
