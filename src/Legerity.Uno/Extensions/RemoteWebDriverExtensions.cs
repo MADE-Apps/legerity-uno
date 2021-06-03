@@ -76,7 +76,7 @@ namespace Legerity.Uno.Extensions
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
-                    driver.FindElement(ByExtensions.WebXamlId(automationId)) as RemoteWebElement
+                    driver.FindElement(ByExtensions.WebAutomationId(automationId)) as RemoteWebElement
             };
         }
     }

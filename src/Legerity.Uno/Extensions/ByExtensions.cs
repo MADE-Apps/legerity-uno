@@ -32,7 +32,7 @@ namespace Legerity.Uno.Extensions
         /// </summary>
         /// <param name="xuid">The XAML element ID.</param>
         /// <returns>The element query.</returns>
-        public static By WebXamlId(string xuid)
+        public static By WebAutomationId(string xuid)
         {
             return By.XPath($".//*[@xuid='{xuid}']");
         }

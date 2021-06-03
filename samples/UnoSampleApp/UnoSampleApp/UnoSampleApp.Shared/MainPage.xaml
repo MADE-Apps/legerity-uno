@@ -73,15 +73,23 @@
                 Background="Transparent"
                 DefaultLabelPosition="Right"
                 IsOpen="False">
-                <AppBarButton Icon="Add" Label="Add" />
-                <AppBarButton Icon="Edit" Label="Edit" />
-                <AppBarButton Icon="Share" Label="Share" />
+                <AppBarButton
+                    x:Name="addButton"
+                    Icon="Add"
+                    Label="Add" />
+                <AppBarButton
+                    x:Name="editButton"
+                    Icon="Edit"
+                    Label="Edit" />
+                <AppBarButton
+                    x:Name="shareButton"
+                    Icon="Share"
+                    Label="Share" />
                 <CommandBar.SecondaryCommands>
-                    <AppBarButton Icon="Setting" Label="Settings">
-                        <AppBarButton.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="I" Modifiers="Control" />
-                        </AppBarButton.KeyboardAccelerators>
-                    </AppBarButton>
+                    <AppBarButton
+                        x:Name="settingsButton"
+                        Icon="Setting"
+                        Label="Settings" />
                 </CommandBar.SecondaryCommands>
             </CommandBar>
             <DatePicker

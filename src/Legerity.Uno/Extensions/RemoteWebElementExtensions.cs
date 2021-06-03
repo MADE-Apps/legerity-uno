@@ -3,6 +3,7 @@
 
 namespace Legerity.Uno.Extensions
 {
+    using System;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -76,8 +77,57 @@ namespace Legerity.Uno.Extensions
                 WindowsDriver<WindowsElement> _ =>
                     element.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
-                    element.FindElement(ByExtensions.WebXamlId(automationId)) as RemoteWebElement
+                    element.FindElement(ByExtensions.WebAutomationId(automationId)) as RemoteWebElement
             };
+        }
+
+        /// <summary>
+        /// Gets the value of the specified XAML name for this element.
+        /// </summary>
+        /// <param name="element">The element to retrieve a XAML name for.</param>
+        /// <returns>The element's XAML name.</returns>
+        public static string GetXamlName(this RemoteWebElement element)
+        {
+            return UnoAppManager.App switch
+            {
+                WindowsDriver<WindowsElement> _ => element.GetAttribute("Name"),
+                _ => element.GetAttribute("xamlname")
+            };
+        }
+
+        /// <summary>
+        /// Gets the value of the specified automation ID for this element.
+        /// </summary>
+        /// <param name="element">The element to retrieve an automation ID for.</param>
+        /// <returns>The element's automation ID.</returns>
+        public static string GetAutomationId(this RemoteWebElement element)
+        {
+            return UnoAppManager.App switch
+            {
+                WindowsDriver<WindowsElement> _ => element.GetAttribute("AutomationId"),
+                _ => element.GetAttribute("xuid")
+            };
+        }
+
+        /// <summary>
+        /// Verifies the elements name or AutomationId based on the given compare.
+        /// </summary>
+        /// <param name="element">
+        /// The element to verify.
+        /// </param>
+        /// <param name="compare">
+        /// The value to verify is the name or AutomationId.
+        /// </param>
+        /// <returns>
+        /// True if the element's name or AutomationId matches; otherwise, false.
+        /// </returns>
+        public static bool VerifyNameOrAutomationIdEquals(this RemoteWebElement element, string compare)
+        {
+            string name = element.GetXamlName();
+            string automationId = element.GetAutomationId();
+
+            return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(compare, automationId, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }
