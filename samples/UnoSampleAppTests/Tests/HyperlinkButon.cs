@@ -12,9 +12,9 @@ namespace UnoSampleAppTests.Tests
     using NUnit.Framework;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
-    public class ButtonTests : BaseTestClass
+    public class HyperlinkButtonTests : BaseTestClass
     {
-        public ButtonTests(AppManagerOptions options) : base(options)
+        public HyperlinkButtonTests(AppManagerOptions options) : base(options)
         {
         }
 
@@ -33,9 +33,9 @@ namespace UnoSampleAppTests.Tests
         };
 
         [Test]
-        public void ShouldClickButtonByAutomationId()
+        public void ShouldClickHyperlinkButtonByAutomationId()
         {
-            Button button = UnoAppManager.App.FindElementByAutomationId("SampleButton");
+            HyperlinkButton button = UnoAppManager.App.FindElementByAutomationId("SampleHyperlinkButton");
             button.Click();
         }
     }
