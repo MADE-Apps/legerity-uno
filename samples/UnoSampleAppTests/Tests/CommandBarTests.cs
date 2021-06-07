@@ -4,11 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class CommandBarTests : BaseTestClass
@@ -35,15 +34,15 @@ namespace UnoSampleAppTests.Tests
         [TestCase("editButton")]
         public void ShouldClickPrimaryButton(string primaryButton)
         {
-            CommandBar commandBar = App.FindElementByAutomationId("SampleCommandBar");
-            commandBar.ClickPrimaryButton(primaryButton);
+            new ControlsPage().Invoke(page => page.CommandBar.ClickPrimaryButton(primaryButton));
         }
 
         [TestCase("settingsButton")]
         public void ShouldClickSecondaryButton(string secondaryButton)
         {
-            CommandBar commandBar = App.FindElementByAutomationId("SampleCommandBar");
-            commandBar.ClickSecondaryButton(secondaryButton);
+            this.SkipForPlatform(typeof(WebAppManagerOptions), "Uno Wasm doesn't support secondary buttons in CommandBar elements.");
+
+            new ControlsPage().Invoke(page => page.CommandBar.ClickSecondaryButton(secondaryButton));
         }
     }
 }

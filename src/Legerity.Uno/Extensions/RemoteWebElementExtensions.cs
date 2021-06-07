@@ -6,6 +6,7 @@ namespace Legerity.Uno.Extensions
     using System;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Appium.Android.UiAutomator;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
@@ -45,13 +46,13 @@ namespace Legerity.Uno.Extensions
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
         public static RemoteWebElement FindElementByXamlName(this RemoteWebElement element, string name)
         {
-            return UnoAppManager.App switch
+            return element switch
             {
-                IOSDriver<IOSElement> _ =>
+                IOSElement _ =>
                     element.FindElement(By.Name(name)) as RemoteWebElement,
-                AndroidDriver<AndroidElement> _ =>
-                    element.FindElement(By.Name(name)) as RemoteWebElement,
-                WindowsDriver<WindowsElement> _ =>
+                AndroidElement androidElement =>
+                    androidElement.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(name)),
+                WindowsElement _ =>
                     element.FindElement(By.Name(name)) as RemoteWebElement,
                 _ =>
                     element.FindElement(ByExtensions.WebXamlName(name)) as RemoteWebElement
@@ -61,7 +62,13 @@ namespace Legerity.Uno.Extensions
         /// <summary>
         /// Finds the first element under the given element that matches the given automation identifier.
         /// <para>
-        /// To find elements with this method for web applications, set the following in your App.xaml.cs.
+        /// To find element for platforms supported by Uno, set the following in your App.xaml.cs constructor.
+        /// <code>
+        /// Uno.UI.FrameworkElementHelper.IsUiAutomationMappingEnabled = true;
+        /// </code>
+        /// </para>
+        /// <para>
+        /// For improvements to finding elements for web applications, also set the following in your App.xaml.cs constructor.
         /// <code>
         /// Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlName = true;
         /// </code>
@@ -72,9 +79,11 @@ namespace Legerity.Uno.Extensions
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
         public static RemoteWebElement FindElementByAutomationId(this RemoteWebElement element, string automationId)
         {
-            return UnoAppManager.App switch
+            return element switch
             {
-                WindowsDriver<WindowsElement> _ =>
+                AndroidElement androidElement =>
+                    androidElement.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(automationId)),
+                WindowsElement _ =>
                     element.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
                     element.FindElement(ByExtensions.WebAutomationId(automationId)) as RemoteWebElement
@@ -88,9 +97,9 @@ namespace Legerity.Uno.Extensions
         /// <returns>The element's XAML name.</returns>
         public static string GetXamlName(this RemoteWebElement element)
         {
-            return UnoAppManager.App switch
+            return element switch
             {
-                WindowsDriver<WindowsElement> _ => element.GetAttribute("Name"),
+                WindowsElement _ => element.GetAttribute("Name"),
                 _ => element.GetAttribute("xamlname")
             };
         }
@@ -102,9 +111,10 @@ namespace Legerity.Uno.Extensions
         /// <returns>The element's automation ID.</returns>
         public static string GetAutomationId(this RemoteWebElement element)
         {
-            return UnoAppManager.App switch
+            return element switch
             {
-                WindowsDriver<WindowsElement> _ => element.GetAttribute("AutomationId"),
+                AndroidElement _ => element.GetAttribute("content-desc"),
+                WindowsElement _ => element.GetAttribute("AutomationId"),
                 _ => element.GetAttribute("xuid")
             };
         }

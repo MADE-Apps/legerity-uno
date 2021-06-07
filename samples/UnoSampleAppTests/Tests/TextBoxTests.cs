@@ -4,12 +4,11 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
     using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
     using Shouldly;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
@@ -36,60 +35,41 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldSetText()
         {
-            // Arrange
-            string text = "Hello, World!";
-            TextBox textBox = UnoAppManager.App.FindElementByAutomationId("SampleTextBox");
-
-            // Act
-            textBox.SetText(text);
-
-            // Assert
-            textBox.Text.ShouldBe(text);
+            const string text = "Hello, World!";
+            new ControlsPage().Invoke(page => page.TextBox.SetText(text)).VerifyTextBoxText(text);
         }
 
         [Test]
         public void ShouldAppendText()
         {
-            // Arrange
-            string expected = "Hello, World!";
-            string append = ", World!";
+            const string expected = "Hello, World!";
+            const string append = ", World!";
 
-            TextBox textBox = UnoAppManager.App.FindElementByAutomationId("SampleTextBox");
-            textBox.SetText("Hello");
-
-            // Act
-            textBox.AppendText(append);
-
-            // Assert
-            textBox.Text.ShouldBe(expected);
+            new ControlsPage()
+                .Invoke(page => page.TextBox.SetText("Hello"))
+                .Invoke(page => page.TextBox.AppendText(append))
+                .VerifyTextBoxText(expected);
         }
 
         [Test]
         public void ShouldClearText()
         {
-            // Arrange
             string text = "Hello, World!";
 
-            TextBox textBox = UnoAppManager.App.FindElementByAutomationId("SampleTextBox");
-            textBox.SetText(text);
-
-            // Act
-            textBox.ClearText();
-
-            // Assert
-            textBox.Text.ShouldBe(string.Empty);
+            new ControlsPage()
+                .Invoke(page => page.TextBox.SetText(text))
+                .Invoke(page => page.TextBox.ClearText())
+                .VerifyTextBoxText(string.Empty);
         }
 
         [TestCase(true)]
         [TestCase(false)]
         public void ShouldDetermineReadonlyState(bool isReadonly)
         {
-            // Arrange
-            TextBox textBox = UnoAppManager.App.FindElementByAutomationId(isReadonly ? "SampleReadonlyTextBox" : "SampleTextBox");
+            var page = new ControlsPage();
 
-            // Assert
+            TextBox textBox = isReadonly ? page.ReadonlyTextBox : page.TextBox;
             textBox.IsReadonly.ShouldBe(isReadonly);
         }
-
     }
 }

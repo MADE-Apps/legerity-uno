@@ -4,12 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
     using Shouldly;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
@@ -36,9 +34,7 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldGetText()
         {
-            string text = "I am a TextBlock";
-            TextBlock textBlock = UnoAppManager.App.FindElementByAutomationId("SampleTextBlock");
-            textBlock.Text.ShouldBe(text);
+            new ControlsPage().Invoke(page => page.TextBlock.Text.ShouldBe("I am a TextBlock"));
         }
     }
 }

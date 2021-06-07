@@ -1,23 +1,14 @@
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
 namespace UnoSampleApp
 {
+    using Microsoft.Extensions.Logging;
+    using System;
+    using Windows.ApplicationModel;
+    using Windows.ApplicationModel.Activation;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Navigation;
+    using Uno.UI;
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -27,7 +18,7 @@ namespace UnoSampleApp
         private Window _window;
 
 #else
-        private Windows.UI.Xaml.Window _window;
+        private Windows.UI.Xaml.Window _window;     
 #endif
 
         /// <summary>
@@ -44,8 +35,12 @@ namespace UnoSampleApp
             this.Suspending += OnSuspending;
 #endif
 
+#if __IOS__ || __ANDROID__ || __MACOS__ || __WASM__
+            FrameworkElementHelper.IsUiAutomationMappingEnabled = true;
+#endif
+
 #if __WASM__
-            Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlName = true;
+            FeatureConfiguration.UIElement.AssignDOMXamlName = true;
 #endif
         }
 

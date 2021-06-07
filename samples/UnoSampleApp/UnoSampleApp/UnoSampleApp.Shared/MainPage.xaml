@@ -8,53 +8,40 @@
 
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel HorizontalAlignment="Stretch">
+            <TextBlock
+                Margin="0,0,0,12"
+                AutomationProperties.AutomationId="TitleTextBlock"
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="Control samples" />
+
             <AppBarButton
+                x:Name="SampleAppBarButton"
                 x:Uid="SampleAppBarButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleAppBarButton"
                 Icon="Add"
                 Label="Add" />
             <AppBarToggleButton
-                x:Name="SymbolIcon"
+                x:Name="SampleAppBarToggleButton"
                 x:Uid="SampleAppBarToggleButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleAppBarToggleButton"
                 Icon="Shuffle"
                 Label="SymbolIcon" />
-            <AutoSuggestBox
-                x:Uid="SampleAutoSuggestBox"
-                Width="300"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleAutoSuggestBox"
-                AutomationProperties.Name="Basic AutoSuggestBox"
-                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                TextChanged="AutoSuggestBox_TextChanged" />
             <Button
+                x:Name="SampleButton"
                 x:Uid="SampleButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleButton"
                 Content="Standard XAML button" />
-            <CalendarDatePicker
-                x:Uid="SampleCalendarDatePicker"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleCalendarDatePicker"
-                Header="Calendar"
-                PlaceholderText="Pick a date" />
-            <CalendarView
-                x:Uid="SampleCalendarView"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleCalendarView"
-                CalendarIdentifier="GregorianCalendar"
-                IsGroupLabelVisible="True"
-                IsOutOfScopeEnabled="True"
-                Language="en"
-                SelectionMode="Single" />
             <CheckBox
+                x:Name="SampleCheckBox"
                 x:Uid="SampleCheckBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleCheckBox"
                 Content="Two-state CheckBox" />
             <ComboBox
+                x:Name="SampleComboBox"
                 x:Uid="SampleComboBox"
                 Width="200"
                 Margin="0,0,0,12"
@@ -67,6 +54,7 @@
                 <x:String>Yellow</x:String>
             </ComboBox>
             <CommandBar
+                x:Name="SampleCommandBar"
                 x:Uid="SampleCommandBar"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleCommandBar"
@@ -93,140 +81,43 @@
                 </CommandBar.SecondaryCommands>
             </CommandBar>
             <DatePicker
+                x:Name="SampleDatePicker"
                 x:Uid="SampleDatePicker"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleDatePicker"
                 Header="Pick a date" />
-            <GridView
-                x:Name="BasicGridView"
-                x:Uid="SampleGridView"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleGridView"
-                IsItemClickEnabled="True"
-                SelectionMode="Single" />
             <HyperlinkButton
+                x:Name="SampleHyperlinkButton"
                 x:Uid="SampleHyperlinkButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleHyperlinkButton"
                 Content="Microsoft home page"
                 NavigateUri="http://www.microsoft.com" />
-            <ListBox
-                x:Uid="SampleListBox"
-                Width="200"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleListBox">
-                <x:String>Blue</x:String>
-                <x:String>Green</x:String>
-                <x:String>Red</x:String>
-                <x:String>Yellow</x:String>
-            </ListBox>
-            <ListView
-                x:Name="BaseExample"
-                x:Uid="SampleListView"
-                Width="350"
-                Height="400"
-                Margin="0,0,0,12"
-                HorizontalAlignment="Left"
-                AutomationProperties.AutomationId="SampleListView"
-                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                BorderThickness="1" />
-            <PasswordBox
-                x:Uid="SamplePasswordBox"
-                Width="300"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SamplePasswordBox"
-                AutomationProperties.Name="Simple PasswordBox" />
-            <Pivot
-                x:Uid="SamplePivot"
-                Title="EMAIL"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SamplePivot">
-                <PivotItem Header="All">
-                    <TextBlock Text="all emails go here." />
-                </PivotItem>
-                <PivotItem Header="Unread">
-                    <TextBlock Text="unread emails go here." />
-                </PivotItem>
-                <PivotItem Header="Flagged">
-                    <TextBlock Text="flagged emails go here." />
-                </PivotItem>
-                <PivotItem Header="Urgent">
-                    <TextBlock Text="urgent emails go here." />
-                </PivotItem>
-            </Pivot>
-            <ProgressBar
-                x:Uid="SampleProgressBar"
-                Width="130"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleProgressBar"
-                IsIndeterminate="True"
-                ShowError="False"
-                ShowPaused="False" />
-            <ProgressRing
-                x:Uid="SampleProgressRing"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleProgressRing"
-                IsActive="True" />
-            <RadioButton
-                x:Uid="SampleRadioButton1"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleRadioButton1"
-                Content="Option 1"
-                GroupName="Options" />
-            <RadioButton
-                x:Uid="SampleRadioButton2"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleRadioButton2"
-                Content="Option 2"
-                GroupName="Options" />
-            <RadioButton
-                x:Uid="SampleRadioButton3"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleRadioButton3"
-                Content="Option 3"
-                GroupName="Options" />
-            <Slider
-                x:Uid="SampleSlider"
-                Width="200"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleSlider"
-                LargeChange="100"
-                Maximum="1000"
-                Minimum="500"
-                SmallChange="10"
-                StepFrequency="10"
-                Value="800" />
             <TextBlock
+                x:Name="SampleTextBlock"
                 x:Uid="SampleTextBlock"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTextBlock"
                 Text="I am a TextBlock" />
             <TextBox
+                x:Name="SampleTextBox"
                 x:Uid="SampleTextBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTextBox"
                 AutomationProperties.Name="simple TextBox" />
             <TextBox
+                x:Name="SampleReadonlyTextBox"
                 x:Uid="SampleReadonlyTextBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleReadonlyTextBox"
                 AutomationProperties.Name="simple readonly TextBox"
-                IsReadOnly="True" />
-
+                IsReadOnly="True"
+                Text="Sample readonly TextBox" />
             <TimePicker
+                x:Name="SampleTimePicker"
                 x:Uid="SampleTimePicker"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTimePicker" />
-            <ToggleButton
-                x:Uid="SampleToggleButton"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleToggleButton"
-                Content="ToggleButton" />
-            <ToggleSwitch
-                x:Uid="SampleToggleSwitch"
-                Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleToggleSwitch"
-                AutomationProperties.Name="simple ToggleSwitch" />
         </StackPanel>
     </ScrollViewer>
 </Page>

@@ -4,12 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class AppBarButtonTests : BaseTestClass
@@ -35,8 +33,7 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldClickAppBarButtonByAutomationId()
         {
-            AppBarButton button = UnoAppManager.App.FindElementByAutomationId("SampleAppBarButton");
-            button.Click();
+            new ControlsPage().AppBarButton.Click();
         }
     }
 }

@@ -4,12 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class HyperlinkButtonTests : BaseTestClass
@@ -35,8 +33,7 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldClickHyperlinkButtonByAutomationId()
         {
-            HyperlinkButton button = UnoAppManager.App.FindElementByAutomationId("SampleHyperlinkButton");
-            button.Click();
+            new ControlsPage().Invoke(page => page.HyperlinkButton.Click());
         }
     }
 }

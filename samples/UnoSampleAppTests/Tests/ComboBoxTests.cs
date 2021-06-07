@@ -4,13 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
-    using Shouldly;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class ComboBoxTests : BaseTestClass
@@ -36,15 +33,8 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldSetComboBoxItem()
         {
-            // Arrange
-            string expectedItem = "Green";
-            ComboBox comboBox = App.FindElementByAutomationId("SampleComboBox");
-
-            // Act
-            comboBox.SelectItem(expectedItem);
-
-            // Assert
-            comboBox.SelectedItem.ShouldBe(expectedItem);
+            const string expectedItem = "Green";
+            new ControlsPage().SelectComboBoxItem(expectedItem).VerifyComboBoxItem(expectedItem);
         }
     }
 }

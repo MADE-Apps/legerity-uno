@@ -4,13 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
-    using Shouldly;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class AppBarToggleButtonTests : BaseTestClass
@@ -36,27 +33,13 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void SetToggleSymbolIconButtonOn()
         {
-            // Arrange
-            AppBarToggleButton toggle = UnoAppManager.App.FindElementByAutomationId("SampleAppBarToggleButton");
-
-            // Act
-            toggle.ToggleOn();
-
-            // Assert
-            toggle.IsOn.ShouldBeTrue();
+            new ControlsPage().ToggleAppBarButton(true).VerifyAppBarButtonToggled(true);
         }
 
         [Test]
         public void SetToggleSymbolIconButtonOff()
         {
-            // Arrange
-            AppBarToggleButton toggle = UnoAppManager.App.FindElementByAutomationId("SampleAppBarToggleButton");
-
-            // Act
-            toggle.ToggleOff();
-
-            // Assert
-            toggle.IsOn.ShouldBeFalse();
+            new ControlsPage().ToggleAppBarButton(false).VerifyAppBarButtonToggled(false);
         }
     }
 }

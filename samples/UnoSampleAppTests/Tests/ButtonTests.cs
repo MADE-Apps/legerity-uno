@@ -4,12 +4,11 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
+    using Legerity.Android;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class ButtonTests : BaseTestClass
@@ -20,6 +19,12 @@ namespace UnoSampleAppTests.Tests
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
+            new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
+            {
+                DriverUri = "http://localhost:4723/wd/hub",
+                LaunchAppiumServer = true,
+                ImplicitWait = TimeSpan.FromSeconds(5)
+            },
             new WebAppManagerOptions(
                 WebAppDriverType.Edge,
                 Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
@@ -35,8 +40,9 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldClickButtonByAutomationId()
         {
-            Button button = UnoAppManager.App.FindElementByAutomationId("SampleButton");
-            button.Click();
+            this.SkipForPlatform(typeof(AndroidAppManagerOptions));
+
+            new ControlsPage().Invoke(page => page.Button.Click());
         }
     }
 }

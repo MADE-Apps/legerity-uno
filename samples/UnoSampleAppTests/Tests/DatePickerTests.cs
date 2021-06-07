@@ -4,13 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
-    using Shouldly;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class DatePickerTests : BaseTestClass
@@ -36,15 +33,8 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldSetDate()
         {
-            // Arrange
             var expectedDate = new DateTime(2020, 3, 30);
-            DatePicker datePicker = UnoAppManager.App.FindElementByAutomationId("SampleDatePicker");
-
-            // Act
-            datePicker.SetDate(expectedDate);
-
-            // Assert
-            datePicker.SelectedDate.ShouldBe(expectedDate);
+            new ControlsPage().SetDate(expectedDate).VerifyDate(expectedDate);
         }
     }
 }

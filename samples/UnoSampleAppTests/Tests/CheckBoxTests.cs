@@ -4,13 +4,10 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
-    using Legerity.Uno;
-    using Legerity.Uno.Elements;
-    using Legerity.Uno.Extensions;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
-    using Shouldly;
+    using Pages;
 
     [TestFixtureSource(nameof(TestPlatformOptions))]
     public class CheckBoxTests : BaseTestClass
@@ -36,27 +33,13 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldCheckOn()
         {
-            // Arrange
-            CheckBox checkBox = UnoAppManager.App.FindElementByAutomationId("SampleCheckBox");
-
-            // Act
-            checkBox.CheckOn();
-
-            // Assert
-            checkBox.IsChecked.ShouldBeTrue();
+            new ControlsPage().TickCheckBox(true).VerifyCheckBoxTicked(true);
         }
 
         [Test]
         public void ShouldCheckOff()
         {
-            // Arrange
-            CheckBox checkBox = UnoAppManager.App.FindElementByAutomationId("SampleCheckBox");
-
-            // Act
-            checkBox.CheckOff();
-
-            // Assert
-            checkBox.IsChecked.ShouldBeFalse();
+            new ControlsPage().TickCheckBox(false).VerifyCheckBoxTicked(false);
         }
     }
 }
