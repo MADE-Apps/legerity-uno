@@ -35,7 +35,7 @@ namespace UnoSampleApp
 #endif
 
 #if __WASM__
-            FeatureConfiguration.UIElement.AssignDOMXamlName = true;
+            Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlName = true;
 #endif
         }
 

@@ -4,6 +4,7 @@ namespace UnoSampleAppTests.Tests
     using System.Collections.Generic;
     using System.IO;
     using Legerity;
+    using Legerity.Android;
     using Legerity.Web;
     using Legerity.Windows;
     using NUnit.Framework;
@@ -18,6 +19,11 @@ namespace UnoSampleAppTests.Tests
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
+            new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
+            {
+                DriverUri = "http://localhost:4723/wd/hub",
+                LaunchAppiumServer = false
+            },
             new WebAppManagerOptions(
                 WebAppDriverType.Edge,
                 Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
