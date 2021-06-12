@@ -7,7 +7,6 @@ namespace UnoSampleApp
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
-    using Uno.UI;
 
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -33,10 +32,6 @@ namespace UnoSampleApp
 
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
-#endif
-
-#if __IOS__ || __ANDROID__ || __MACOS__ || __WASM__
-            FrameworkElementHelper.IsUiAutomationMappingEnabled = true;
 #endif
 
 #if __WASM__

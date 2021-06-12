@@ -1,6 +1,3 @@
-﻿using System;
-using Windows.UI.Xaml;
-
 namespace UnoSampleApp.Wasm
 {
     public class Program

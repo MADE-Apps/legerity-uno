@@ -2,7 +2,6 @@ namespace UnoSampleAppTests.Pages
 {
     using System;
     using System.Threading;
-    using Legerity;
     using Legerity.Pages;
     using Legerity.Uno.Elements;
     using Legerity.Uno.Extensions;
@@ -14,11 +13,6 @@ namespace UnoSampleAppTests.Pages
     public class ControlsPage : BasePage
     {
         private const string SampleControlPrefix = "Sample";
-
-        public ControlsPage()
-            : base(TimeSpan.FromSeconds(5))
-        {
-        }
 
         protected override By Trait => DetermineTrait();
 
@@ -53,7 +47,6 @@ namespace UnoSampleAppTests.Pages
 
         public TimePicker TimePicker =>
             this.App.FindElementByAutomationId($"{SampleControlPrefix}{nameof(this.TimePicker)}");
-
         public ControlsPage ToggleAppBarButton(bool toggleOn)
         {
             if (toggleOn)
@@ -149,7 +142,7 @@ namespace UnoSampleAppTests.Pages
             return this.App switch
             {
                 WindowsDriver<WindowsElement> _ => ByExtensions.AutomationId("TitleTextBlock"),
-                _ => ByExtras.Text("Control samples")
+                _ => By.XPath("//*")
             };
         }
     }

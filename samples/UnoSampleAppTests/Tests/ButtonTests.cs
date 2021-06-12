@@ -3,6 +3,7 @@ namespace UnoSampleAppTests.Tests
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using Legerity;
     using Legerity.Android;
     using Legerity.Web;
@@ -22,8 +23,7 @@ namespace UnoSampleAppTests.Tests
             new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
             {
                 DriverUri = "http://localhost:4723/wd/hub",
-                LaunchAppiumServer = true,
-                ImplicitWait = TimeSpan.FromSeconds(5)
+                LaunchAppiumServer = false
             },
             new WebAppManagerOptions(
                 WebAppDriverType.Edge,
@@ -40,8 +40,6 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldClickButtonByAutomationId()
         {
-            this.SkipForPlatform(typeof(AndroidAppManagerOptions));
-
             new ControlsPage().Invoke(page => page.Button.Click());
         }
     }

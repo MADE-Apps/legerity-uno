@@ -4,9 +4,8 @@ namespace UnoSampleAppTests
     using Legerity;
     using Legerity.Uno;
     using NUnit.Framework;
-    using OpenQA.Selenium.Remote;
 
-    public abstract class BaseTestClass
+    public abstract class BaseTestClass : UnoTestClass
     {
         public const string AndroidApplication = "Tools\\Android\\com.made.unosampleapp.apk";
 
@@ -14,25 +13,20 @@ namespace UnoSampleAppTests
 
         public const string WindowsApplication = "com.madeapps.unosampleapp_7mzr475ysvhxg!App";
 
-        protected BaseTestClass(AppManagerOptions options)
+        protected BaseTestClass(AppManagerOptions options) : base(options)
         {
-            this.Options = new UnoAppManagerOptions(options);
         }
 
-        protected static RemoteWebDriver App => UnoAppManager.App;
-
-        private UnoAppManagerOptions Options { get; }
-
         [SetUp]
-        public virtual void Initialize()
+        public override void StartApp()
         {
-            UnoAppManager.StartApp(this.Options);
+            base.StartApp();
         }
 
         [TearDown]
-        public virtual void Cleanup()
+        public override void StopApp()
         {
-            UnoAppManager.StopApp();
+            base.StopApp();
         }
 
         protected void SkipForPlatform(Type skipType, string message = default)
