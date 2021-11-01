@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     mc:Ignorable="d">
 
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -53,7 +54,7 @@
                 <x:String>Red</x:String>
                 <x:String>Yellow</x:String>
             </ComboBox>
-            <CommandBar
+            <win:CommandBar
                 x:Name="SampleCommandBar"
                 x:Uid="SampleCommandBar"
                 Margin="0,0,0,12"
@@ -79,7 +80,7 @@
                         Icon="Setting"
                         Label="Settings" />
                 </CommandBar.SecondaryCommands>
-            </CommandBar>
+            </win:CommandBar>
             <DatePicker
                 x:Name="SampleDatePicker"
                 x:Uid="SampleDatePicker"

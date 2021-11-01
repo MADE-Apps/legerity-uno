@@ -25,7 +25,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'src/Legerity.Uno.sln'
+      SOLUTION: 'src/Legerity.Uno.NoSamples.slnf'
 
     runs-on: ubuntu-latest
 

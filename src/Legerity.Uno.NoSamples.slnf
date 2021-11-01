@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "Legerity.Uno.sln",
+    "projects": [
+      "..\\samples\\UnoSampleAppTests\\UnoSampleAppTests.csproj",
+      "Legerity.Uno\\Legerity.Uno.csproj"
+    ]
+  }
+}

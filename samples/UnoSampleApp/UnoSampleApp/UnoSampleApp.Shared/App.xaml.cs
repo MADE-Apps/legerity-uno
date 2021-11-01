@@ -13,12 +13,7 @@ namespace UnoSampleApp
     /// </summary>
     public sealed partial class App : Application
     {
-#if NET5_0 && WINDOWS
         private Window _window;
-
-#else
-        private Windows.UI.Xaml.Window _window;     
-#endif
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
