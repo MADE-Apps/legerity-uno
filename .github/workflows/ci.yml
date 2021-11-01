@@ -1,23 +1,28 @@
 name: CI
 
 on:
-  create:
-    branches:
-      - release/**
   push:
+    tags:
+    - v*
     branches:
     - main
     paths:
     - src/**
     - samples/**
+    - tests/**
+    - build/**
     - .github/workflows/ci.yml
+    - global.json
   pull_request:
     branches:
     - main
     paths:
     - src/**
     - samples/**
+    - tests/**
+    - build/**
     - .github/workflows/ci.yml
+    - global.json
   workflow_dispatch:
 
 jobs:
@@ -25,9 +30,9 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'src/Legerity.Uno.sln'
+      SOLUTION: 'Legerity.Uno.NoSamples.slnf'
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -46,13 +51,16 @@ jobs:
     - name: Restore dependencies
       run: nuget restore $SOLUTION
 
-    - name: Setup .NET
+    - name: Setup .NET Core 3.1
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
+      run: msbuild $env:SOLUTION /p:Configuration=$env:BUILD_CONFIG /p:Platform="Any CPU" -p:Version=$env:BUILD_VERSION
 
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')

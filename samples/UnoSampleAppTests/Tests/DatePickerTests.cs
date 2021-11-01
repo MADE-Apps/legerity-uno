@@ -19,8 +19,14 @@ namespace UnoSampleAppTests.Tests
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
             new WebAppManagerOptions(
-                WebAppDriverType.Edge,
-                Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
+                WebAppDriverType.EdgeChromium,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
+            },
+            new WebAppManagerOptions(
+                WebAppDriverType.Chrome,
+                Path.Combine(Environment.CurrentDirectory))
             {
                 Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
             },

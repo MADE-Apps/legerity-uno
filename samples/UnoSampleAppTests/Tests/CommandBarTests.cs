@@ -18,12 +18,6 @@ namespace UnoSampleAppTests.Tests
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
-            new WebAppManagerOptions(
-                WebAppDriverType.Edge,
-                Path.Combine(Environment.CurrentDirectory, "Tools\\Edge"))
-            {
-                Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
-            },
             new WindowsAppManagerOptions(WindowsApplication)
             {
                 DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true, Maximize = true
