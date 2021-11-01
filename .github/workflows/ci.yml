@@ -56,6 +56,9 @@ jobs:
       with:
         dotnet-version: 3.1.x
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
     - name: Build
       run: msbuild $env:SOLUTION /p:Configuration=$env:BUILD_CONFIG /p:Platform="Any CPU" -p:Version=$env:BUILD_VERSION
 
