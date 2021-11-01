@@ -30,7 +30,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'src/Legerity.Uno.NoSamples.slnf'
+      SOLUTION: 'Legerity.Uno.NoSamples.slnf'
 
     runs-on: windows-latest
 
