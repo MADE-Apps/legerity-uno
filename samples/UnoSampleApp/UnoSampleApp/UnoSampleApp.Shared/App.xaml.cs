@@ -48,7 +48,7 @@ namespace UnoSampleApp
             }
 #endif
 
-#if NET5_0 && WINDOWS
+#if NET6_0_OR_GREATER && WINDOWS
             _window = new Window();
             _window.Activate();
 #else
@@ -75,7 +75,7 @@ namespace UnoSampleApp
                 _window.Content = rootFrame;
             }
 
-#if !(NET5_0 && WINDOWS)
+#if !(NET6_0_OR_GREATER && WINDOWS)
             if (e.PrelaunchActivated == false)
 #endif
             {
@@ -98,7 +98,7 @@ namespace UnoSampleApp
         /// <param name="e">Details about the navigation failure</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            throw new Exception($"Failed to load {e.SourcePageType.FullName}: {e.Exception}");
+            throw new InvalidOperationException($"Failed to load {e.SourcePageType.FullName}: {e.Exception}");
         }
 
         /// <summary>
@@ -169,6 +169,10 @@ namespace UnoSampleApp
             });
 
             global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
+
+#if HAS_UNO
+            global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
+#endif
         }
     }
 }
