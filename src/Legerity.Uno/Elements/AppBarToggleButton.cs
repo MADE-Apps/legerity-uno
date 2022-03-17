@@ -88,8 +88,8 @@ namespace Legerity.Uno.Elements
                 WindowsElement _ =>
                     this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue,
                 _ =>
-                    this.Element.FindElementByXamlName("CheckedHighlightBackground")
-                        .GetCssValue("opacity") != ToggleOffValue
+                    this.Element.FindElementByXamlName("OverflowCheckGlyph")
+                        .GetAttribute("style").Contains("opacity") == false
             };
         }
     }

@@ -47,6 +47,7 @@ namespace UnoSampleAppTests.Pages
 
         public TimePicker TimePicker =>
             this.App.FindElementByAutomationId($"{SampleControlPrefix}{nameof(this.TimePicker)}");
+
         public ControlsPage ToggleAppBarButton(bool toggleOn)
         {
             if (toggleOn)
@@ -63,6 +64,7 @@ namespace UnoSampleAppTests.Pages
 
         public ControlsPage VerifyAppBarButtonToggled(bool expectedToggle)
         {
+            this.AppBarToggleButton.WaitUntil(button => button.IsOn, TimeSpan.FromSeconds(5));
             this.AppBarToggleButton.IsOn.ShouldBe(expectedToggle);
             return this;
         }
