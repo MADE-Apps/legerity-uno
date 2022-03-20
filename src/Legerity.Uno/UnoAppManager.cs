@@ -26,7 +26,7 @@ namespace Legerity.Uno
         /// <summary>
         /// Gets the instance of the options that started the application.
         /// </summary>
-        internal static UnoAppManagerOptions Options { get; private set; }
+        public static UnoAppManagerOptions Options { get; set; }
 
         /// <summary>
         /// Starts the application ready for testing.

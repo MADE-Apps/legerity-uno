@@ -81,7 +81,7 @@ namespace Legerity.Uno.Extensions
             return driver switch
             {
                 AndroidDriver<AndroidElement> androidDriver =>
-                    androidDriver.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(automationId)),
+                    androidDriver.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionContains(automationId)),
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>

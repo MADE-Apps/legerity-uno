@@ -5,10 +5,8 @@ namespace Legerity.Uno.Elements
 {
     using System;
     using System.Collections.ObjectModel;
-
     using Legerity.Exceptions;
     using Legerity.Extensions;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
     using OpenQA.Selenium.Support.UI;
@@ -44,7 +42,7 @@ namespace Legerity.Uno.Elements
 
         /// <summary>Gets the original <see cref="RemoteWebElement"/> reference object.</summary>
         public RemoteWebElement Element =>
-            this.elementReference is { IsAlive: true }
+            this.elementReference is {IsAlive: true}
                 ? this.elementReference.Target as RemoteWebElement
                 : null;
 

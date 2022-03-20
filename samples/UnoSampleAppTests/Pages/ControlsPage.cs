@@ -1,7 +1,10 @@
 namespace UnoSampleAppTests.Pages
 {
     using System;
+    using System.IO;
+    using System.Runtime.CompilerServices;
     using System.Threading;
+    using System.Threading.Tasks;
     using Legerity.Pages;
     using Legerity.Uno.Elements;
     using Legerity.Uno.Extensions;
@@ -14,7 +17,7 @@ namespace UnoSampleAppTests.Pages
     {
         private const string SampleControlPrefix = "Sample";
 
-        protected override By Trait => DetermineTrait();
+        protected override By Trait => this.DetermineTrait();
 
         public Button Button => this.App.FindElementByAutomationId($"{SampleControlPrefix}{nameof(this.Button)}");
 
@@ -64,7 +67,10 @@ namespace UnoSampleAppTests.Pages
 
         public ControlsPage VerifyAppBarButtonToggled(bool expectedToggle)
         {
-            this.AppBarToggleButton.WaitUntil(button => button.IsOn, TimeSpan.FromSeconds(5));
+            this.SaveSourceAsync().GetAwaiter().GetResult();
+
+            this.AppBarToggleButton.WaitUntil(button => expectedToggle ? button.IsOn : !button.IsOn,
+                TimeSpan.FromSeconds(5));
             this.AppBarToggleButton.IsOn.ShouldBe(expectedToggle);
             return this;
         }
@@ -109,7 +115,8 @@ namespace UnoSampleAppTests.Pages
 
         public ControlsPage VerifyDate(DateTime expectedDate)
         {
-            Thread.Sleep(500); // Uno Wasm applications run too fast to ensure the selected date is set correctly before executing.
+            Thread.Sleep(
+                500); // Uno Wasm applications run too fast to ensure the selected date is set correctly before executing.
             this.DatePicker.SelectedDate.ShouldBe(expectedDate);
             return this;
         }
@@ -146,6 +153,12 @@ namespace UnoSampleAppTests.Pages
                 WindowsDriver<WindowsElement> _ => ByExtensions.AutomationId("TitleTextBlock"),
                 _ => By.XPath("//*")
             };
+        }
+
+        private async Task SaveSourceAsync([CallerMemberName] string caller = default)
+        {
+            string source = this.App.PageSource;
+            await File.WriteAllTextAsync(Path.Combine(Environment.CurrentDirectory, $"{caller}.txt"), source);
         }
     }
 }

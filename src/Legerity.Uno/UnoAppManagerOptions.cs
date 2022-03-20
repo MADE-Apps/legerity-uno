@@ -21,5 +21,12 @@ namespace Legerity.Uno
         /// Gets the platform specific <see cref="Legerity.AppManagerOptions"/>.
         /// </summary>
         public AppManagerOptions AppManagerOptions { get; }
+
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
+        public override string ToString()
+        {
+            return this.AppManagerOptions.ToString();
+        }
     }
 }

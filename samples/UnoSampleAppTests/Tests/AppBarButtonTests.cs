@@ -3,6 +3,7 @@ namespace UnoSampleAppTests.Tests
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Threading.Tasks;
     using Legerity;
     using Legerity.Android;
     using Legerity.Web;
@@ -19,8 +20,10 @@ namespace UnoSampleAppTests.Tests
 
         static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
         {
-            new AndroidAppManagerOptions(Path.Combine(Environment.CurrentDirectory, AndroidApplication))
+            new AndroidAppManagerOptions
             {
+                AppId = AndroidApplication,
+                AppActivity = AndroidApplicationActivity,
                 DriverUri = "http://localhost:4723/wd/hub",
                 LaunchAppiumServer = false
             },

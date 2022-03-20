@@ -1,20 +1,24 @@
 namespace Legerity.Uno.Elements
 {
     using System;
-    using System.Text.RegularExpressions;
     using Legerity.Extensions;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Internal;
     using OpenQA.Selenium.Remote;
 
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core DatePicker control.
     /// </summary>
-    public class DatePicker : UnoElementWrapper
+    public partial class DatePicker : UnoElementWrapper
     {
+        private const string DayLoopingSelectorName = "DayLoopingSelector";
+        private const string MonthLoopingSelectorName = "MonthLoopingSelectorName";
+        private const string YearLoopingSelectorName = "YearLoopingSelectorName";
+        private const string AcceptButtonName = "AcceptButton";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DatePicker"/> class.
         /// </summary>
@@ -66,138 +70,96 @@ namespace Legerity.Uno.Elements
             this.Element.Click();
 
             // Finds the popup and change values.
-            RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutQuery());
-            this.FindSelectorValue(popup.FindWebElement(this.DaySelectorQuery()), date.ToString("%d")).Click();
-            this.FindSelectorValue(popup.FindWebElement(this.MonthSelectorQuery()), date.ToString("MMMM")).Click();
-            this.FindSelectorValue(popup.FindWebElement(this.YearSelectorQuery()), date.ToString("yyyy")).Click();
-            popup.FindWebElement(this.AcceptButtonQuery()).Click();
+            RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());
+            this.FindSelectorChildElementByValue(popup.FindWebElement(this.DaySelectorLocator()), date.ToString("%d")).Click();
+            this.FindSelectorChildElementByValue(popup.FindWebElement(this.MonthSelectorLocator()), date.ToString("MMMM")).Click();
+            this.FindSelectorChildElementByValue(popup.FindWebElement(this.YearSelectorLocator()), date.ToString("yyyy")).Click();
+            popup.FindWebElement(this.AcceptButtonLocator()).Click();
         }
 
         private DateTime? DetermineSelectedDate()
         {
-            string day = string.Empty;
-            string month = string.Empty;
-            string year = string.Empty;
+            string day;
+            string month;
+            string year;
 
-            switch (this.Element)
+            (day, month, year) = this.Element switch
             {
-                case AndroidElement _:
-                    break;
-                case IOSElement _:
-                    break;
-                case WindowsElement _:
-                    string dateString = this.Element
-                        .FindWebElement(Windows.Extensions.ByExtensions.AutomationId("FlyoutButton"))
-                        .GetAttribute("Name")
-                        .Replace("Pick a date ", string.Empty)
-                        .Replace(" date picker", string.Empty)
-                        .Replace(",", string.Empty);
-
-                    day = new Regex("(\\d{2})").Match(dateString).Value.Trim();
-                    month = new Regex("([a-zA-Z]+)").Match(dateString).Value;
-                    year = new Regex("(\\d{4})").Match(dateString).Value.Trim();
-                    break;
-                default:
-                    day = this.Element.FindElementByXamlName("DayTextBlock").Text;
-                    month = this.Element.FindElementByXamlName("MonthTextBlock").Text;
-                    year = this.Element.FindElementByXamlName("YearTextBlock").Text;
-                    break;
-            }
+                AndroidElement _ => this.DetermineSelectedDateAndroid(),
+                IOSElement _ => this.DetermineSelectedDateIOS(),
+                WindowsElement _ => this.DetermineSelectedDateWindows(),
+                _ => this.DetermineSelectedDateWasm()
+            };
 
             return string.IsNullOrWhiteSpace(day) ||
                    string.IsNullOrWhiteSpace(month) ||
-                   string.IsNullOrWhiteSpace(year) ?
-                default :
+                   string.IsNullOrWhiteSpace(year) ? default :
                 DateTime.TryParse($"{day} {month} {year}", out DateTime date) ? date : default(DateTime?);
         }
 
-        private IWebElement FindSelectorValue(RemoteWebElement selector, string value)
+        private IWebElement FindSelectorChildElementByValue(IFindsByName element, string value)
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => selector.FindElementByName(value),
-                _ => selector.FindElementByText(value)
+                AndroidElement _ => FindSelectorChildElementByValueAndroid(element, value),
+                IOSElement _ => FindSelectorChildElementByValueIOS(element, value),
+                WindowsElement _ => FindSelectorChildElementByValueWindows(element, value),
+                _ => FindSelectorChildElementByValueWasm(element, value),
             };
         }
 
-        private By FlyoutQuery()
+        private By FlyoutLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("DatePickerFlyoutPresenter"),
-                _ => ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.DatePickerFlyoutPresenter")
+                AndroidElement _ => FlyoutLocatorAndroid(),
+                IOSElement _ => FlyoutLocatorIOS(),
+                WindowsElement _ => FlyoutLocatorWindows(),
+                _ => FlyoutLocatorWasm()
             };
         }
 
-        private By DaySelectorQuery()
+        private By DaySelectorLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("DayLoopingSelector"),
-                _ => ByExtensions.WebXamlName("DayLoopingSelector")
+                AndroidElement _ => DaySelectorLocatorAndroid(),
+                IOSElement _ => DaySelectorLocatorIOS(),
+                WindowsElement _ => DaySelectorLocatorWindows(),
+                _ => DaySelectorLocatorWasm()
             };
         }
 
-        private By MonthSelectorQuery()
+        private By MonthSelectorLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("MonthLoopingSelector"),
-                _ => ByExtensions.WebXamlName("MonthLoopingSelector")
+                AndroidElement _ => MonthSelectorLocatorAndroid(),
+                IOSElement _ => MonthSelectorLocatorIOS(),
+                WindowsElement _ => MonthSelectorLocatorWindows(),
+                _ => MonthSelectorLocatorWasm()
             };
         }
 
-        private By YearSelectorQuery()
+        private By YearSelectorLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("YearLoopingSelector"),
-                _ => ByExtensions.WebXamlName("YearLoopingSelector")
+                AndroidElement _ => YearSelectorLocatorAndroid(),
+                IOSElement _ => YearSelectorLocatorIOS(),
+                WindowsElement _ => YearSelectorLocatorWindows(),
+                _ => YearSelectorLocatorWasm()
             };
         }
 
-        private By AcceptButtonQuery()
+        private By AcceptButtonLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("AcceptButton"),
-                _ => ByExtensions.WebXamlName("AcceptButton")
+                AndroidElement _ => AcceptButtonLocatorAndroid(),
+                IOSElement _ => AcceptButtonLocatorIOS(),
+                WindowsElement _ => AcceptButtonLocatorWindows(),
+                _ => AcceptButtonLocatorWasm()
             };
         }
     }

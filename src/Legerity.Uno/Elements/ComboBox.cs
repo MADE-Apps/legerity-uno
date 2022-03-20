@@ -1,9 +1,6 @@
 namespace Legerity.Uno.Elements
 {
     using System;
-    using System.Linq;
-    using Legerity.Extensions;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -13,7 +10,7 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core ComboBox control.
     /// </summary>
-    public class ComboBox : UnoElementWrapper
+    public partial class ComboBox : UnoElementWrapper
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -66,7 +63,7 @@ namespace Legerity.Uno.Elements
         {
             this.Element.Click();
 
-            this.VerifyElementsShown(this.ComboBoxItemQuery(), TimeSpan.FromSeconds(2));
+            this.VerifyElementsShown(this.ComboBoxItemLocator(), TimeSpan.FromSeconds(2));
 
             RemoteWebElement item = this.DetermineListElement(name);
 
@@ -77,15 +74,10 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ => throw new NotImplementedException(),
-                IOSElement _ => throw new NotImplementedException(),
-                WindowsElement _ => this.Element
-                    .FindWebElements(this.ComboBoxItemQuery())
-                    .FirstOrDefault(element => element.GetAttribute("Name").Equals(name, StringComparison.CurrentCultureIgnoreCase)),
-                _ => this.Driver
-                    .FindWebElements(this.ComboBoxItemQuery())
-                    .SelectMany(element => element.FindWebElements(By.TagName("p")))
-                    .FirstOrDefault(element => element.Text.Equals(name, StringComparison.CurrentCultureIgnoreCase))
+                AndroidElement _ => this.DetermineListElementAndroid(name),
+                IOSElement _ => this.DetermineListElementIOS(name),
+                WindowsElement _ => this.DetermineListElementWindows(name),
+                _ => this.DetermineListElementWasm(name)
             };
         }
 
@@ -93,28 +85,21 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ => throw new NotImplementedException(),
-                IOSElement _ => throw new NotImplementedException(),
-                WindowsElement _ => this.Element.FindWebElements(this.ComboBoxItemQuery()).FirstOrDefault()?.GetAttribute("Name"),
-                _ => this.Element.FindWebElements(ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.ContentPresenter"))
-                    .LastOrDefault()?
-                    .FindWebElement(By.TagName("p"))?
-                    .Text
+                AndroidElement _ => this.DetermineSelectedItemAndroid(),
+                IOSElement _ => this.DetermineSelectedItemIOS(),
+                WindowsElement _ => this.DetermineSelectedItemWindows(),
+                _ => this.DetermineSelectedItemWasm()
             };
         }
 
-        private By ComboBoxItemQuery()
+        private By ComboBoxItemLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => By.ClassName("ComboBoxItem"),
-                _ => ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.ComboBoxItem")
+                AndroidElement _ => this.ComboBoxItemLocatorAndroid(),
+                IOSElement _ => this.ComboBoxItemLocatorIOS(),
+                WindowsElement _ => ComboBoxItemLocatorWindows(),
+                _ => ComboBoxItemLocatorWasm()
             };
         }
     }

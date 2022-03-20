@@ -50,6 +50,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MADE.UI" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.ChipBox" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.DropDownList" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.FilePicker" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.RichEditToolbar" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.Validator" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Data.Converters" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Styling" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.ViewManagement" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Views.Dialogs" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Views.Navigation" Version="1.5.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
     <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.1.0" />

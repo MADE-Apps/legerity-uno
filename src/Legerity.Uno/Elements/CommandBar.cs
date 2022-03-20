@@ -14,8 +14,10 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core CommandBar control.
     /// </summary>
-    public class CommandBar : UnoElementWrapper
+    public partial class CommandBar : UnoElementWrapper
     {
+        private const string MoreButtonName = "MoreButton";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBar"/> class.
         /// </summary>
@@ -42,7 +44,7 @@ namespace Legerity.Uno.Elements
         /// Gets the collection of primary buttons.
         /// </summary>
         public IEnumerable<AppBarButton> PrimaryButtons =>
-            this.Element.FindWebElements(this.AppBarButtonItemQuery())
+            this.FindElements(this.AppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -52,7 +54,8 @@ namespace Legerity.Uno.Elements
         /// </para>
         /// </summary>
         public IEnumerable<AppBarButton> SecondaryButtons =>
-            this.Driver.FindWebElement(this.SecondaryOverflowPopupQuery()).FindWebElements(this.AppBarButtonItemQuery())
+            this.Driver.FindWebElement(this.SecondaryOverflowPopupLocator())
+                .FindWebElements(this.AppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -91,12 +94,12 @@ namespace Legerity.Uno.Elements
         /// </param>
         public void ClickSecondaryButton(string name)
         {
-            this.VerifyElementShown(this.SecondaryOverflowButtonQuery(), TimeSpan.FromSeconds(2));
+            this.VerifyElementShown(this.SecondaryOverflowButtonLocator(), TimeSpan.FromSeconds(2));
 
-            AppBarButton secondaryOverflowButton = this.Element.FindWebElement(this.SecondaryOverflowButtonQuery());
+            AppBarButton secondaryOverflowButton = this.Element.FindWebElement(this.SecondaryOverflowButtonLocator());
             secondaryOverflowButton.Click();
 
-            this.VerifyDriverElementShown(this.SecondaryOverflowPopupQuery(), TimeSpan.FromSeconds(2));
+            this.VerifyDriverElementShown(this.SecondaryOverflowPopupLocator(), TimeSpan.FromSeconds(2));
 
             AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
                 button => button.Element.VerifyNameOrAutomationIdEquals(name));
@@ -104,50 +107,37 @@ namespace Legerity.Uno.Elements
             secondaryButton.Click();
         }
 
-        private By AppBarButtonItemQuery()
+        private By AppBarButtonItemLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => By.ClassName("AppBarButton"),
-                _ => ByExtensions.WebXamlType(AppBarButton.WindowsType)
+                AndroidElement _ => AppBarButtonItemLocatorAndroid(),
+                IOSElement _ => AppBarButtonItemLocatorIOS(),
+                WindowsElement _ => AppBarButtonItemLocatorWindows(),
+                _ => AppBarButtonItemLocatorWasm()
             };
         }
 
-        private By SecondaryOverflowButtonQuery()
+        private By SecondaryOverflowButtonLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("MoreButton"),
-                _ => ByExtensions.WebXamlName("MoreButton")
+                AndroidElement _ => SecondaryOverflowButtonLocatorAndroid(),
+                IOSElement _ => SecondaryOverflowButtonLocatorIOS(),
+                WindowsElement _ => SecondaryOverflowButtonLocatorWindows(),
+                _ => SecondaryOverflowButtonLocatorWasm()
             };
         }
 
-        private By SecondaryOverflowPopupQuery()
+        private By SecondaryOverflowPopupLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("OverflowPopup"),
-                _ => ByExtensions.WebXamlName("OverflowPopup")
+                AndroidElement _ => SecondaryOverflowPopupLocatorAndroid(),
+                IOSElement _ => SecondaryOverflowPopupLocatorIOS(),
+                WindowsElement _ => SecondaryOverflowPopupLocatorWindows(),
+                _ => SecondaryOverflowPopupLocatorWasm()
             };
         }
-
     }
 }
