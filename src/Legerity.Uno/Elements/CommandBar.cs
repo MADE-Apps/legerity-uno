@@ -44,7 +44,7 @@ namespace Legerity.Uno.Elements
         /// Gets the collection of primary buttons.
         /// </summary>
         public IEnumerable<AppBarButton> PrimaryButtons =>
-            this.FindElements(this.AppBarButtonItemLocator())
+            this.FindElements(this.PrimaryAppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Legerity.Uno.Elements
         /// </summary>
         public IEnumerable<AppBarButton> SecondaryButtons =>
             this.Driver.FindWebElement(this.SecondaryOverflowPopupLocator())
-                .FindWebElements(this.AppBarButtonItemLocator())
+                .FindWebElements(this.SecondaryAppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
         /// <summary>
@@ -107,11 +107,22 @@ namespace Legerity.Uno.Elements
             secondaryButton.Click();
         }
 
-        private By AppBarButtonItemLocator()
+        private By PrimaryAppBarButtonItemLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ => AppBarButtonItemLocatorAndroid(),
+                AndroidElement _ => PrimaryAppBarButtonItemLocatorAndroid(),
+                IOSElement _ => AppBarButtonItemLocatorIOS(),
+                WindowsElement _ => AppBarButtonItemLocatorWindows(),
+                _ => AppBarButtonItemLocatorWasm()
+            };
+        }
+
+        private By SecondaryAppBarButtonItemLocator()
+        {
+            return this.Element switch
+            {
+                AndroidElement _ => SecondaryAppBarButtonItemLocatorAndroid(),
                 IOSElement _ => AppBarButtonItemLocatorIOS(),
                 WindowsElement _ => AppBarButtonItemLocatorWindows(),
                 _ => AppBarButtonItemLocatorWasm()

@@ -20,6 +20,7 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
+                AndroidElement _ => element.GetContentDescription(),
                 WindowsElement _ => element.GetName(),
                 _ => element.GetAttribute("xamlname")
             };

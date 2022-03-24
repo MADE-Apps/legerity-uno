@@ -1,26 +1,27 @@
 namespace Legerity.Uno.Elements
 {
-    using System;
     using OpenQA.Selenium;
 
     public partial class CommandBar
     {
-        private static By AppBarButtonItemLocatorAndroid()
+        private static By PrimaryAppBarButtonItemLocatorAndroid()
         {
-            throw new NotImplementedException(
-                "An implementation for Android has not been implemented yet.");
+            return By.XPath(".//*[@content-desc='PrimaryItemsControl']/android.view.ViewGroup/android.view.ViewGroup/child::*");
+        }
+
+        private static By SecondaryAppBarButtonItemLocatorAndroid()
+        {
+            return By.XPath(".//*[@content-desc='ItemsPresenter']/android.view.ViewGroup/child::*");
         }
 
         private static By SecondaryOverflowButtonLocatorAndroid()
         {
-            throw new NotImplementedException(
-                "An implementation for Android has not been implemented yet.");
+            return ByExtras.AndroidXamlAutomationId("EllipsisIcon");
         }
 
         private static By SecondaryOverflowPopupLocatorAndroid()
         {
-            throw new NotImplementedException(
-                "An implementation for Android has not been implemented yet.");
+            return ByExtras.AndroidXamlAutomationId("OverflowContentRoot");
         }
     }
 }
