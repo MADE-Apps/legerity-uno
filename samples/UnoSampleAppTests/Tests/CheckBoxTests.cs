@@ -47,22 +47,12 @@ namespace UnoSampleAppTests.Tests
         [Test]
         public void ShouldCheckOn()
         {
-            this.SkipForPlatform(
-                Assert.Ignore,
-                "CheckBox states are not currently supported through automation properties in Uno Platform.",
-                typeof(AndroidAppManagerOptions));
-
             new ControlsPage().TickCheckBox(true).VerifyCheckBoxTicked(true);
         }
 
         [Test]
         public void ShouldCheckOff()
         {
-            this.SkipForPlatform(
-                Assert.Ignore,
-                "CheckBox states are not currently supported through automation properties in Uno Platform.",
-                typeof(AndroidAppManagerOptions));
-
             new ControlsPage().TickCheckBox(false).VerifyCheckBoxTicked(false);
         }
     }
