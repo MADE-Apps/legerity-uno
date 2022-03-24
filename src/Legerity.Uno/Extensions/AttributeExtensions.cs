@@ -1,5 +1,6 @@
 namespace Legerity.Uno.Extensions
 {
+    using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.Windows;
@@ -18,7 +19,7 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
-                WindowsElement _ => element.GetAttribute("Name"),
+                WindowsElement _ => element.GetName(),
                 _ => element.GetAttribute("xamlname")
             };
         }
