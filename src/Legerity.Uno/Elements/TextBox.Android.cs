@@ -1,12 +1,14 @@
 namespace Legerity.Uno.Elements
 {
+    using Legerity.Extensions;
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
     public partial class TextBox
     {
         private RemoteWebElement DetermineInputElementAndroid()
         {
-            return this.Element;
+            return this.Element.FindWebElement(By.ClassName("android.widget.EditText"));
         }
 
         private string DetermineTextAndroid()
