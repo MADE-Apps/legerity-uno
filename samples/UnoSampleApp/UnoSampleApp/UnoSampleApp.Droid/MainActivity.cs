@@ -5,12 +5,17 @@ namespace UnoSampleApp.Droid
     using Android.Views;
 
     [Activity(
+        Name = "com.made.unosampleapp.MainActivity",
+#if DEBUG
+        // Disabled because of https://github.com/xamarin/xamarin-android/issues/6463
+        Exported = true,
+#endif
         MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize,
+        ConfigurationChanges = ConfigChanges.Orientation,
         WindowSoftInputMode = SoftInput.AdjustPan | SoftInput.StateHidden
     )]
-	public class MainActivity : Windows.UI.Xaml.ApplicationActivity
-	{
-	}
+    public class MainActivity : Windows.UI.Xaml.ApplicationActivity
+    {
+    }
 }
 

@@ -7,7 +7,9 @@ namespace UnoSampleAppTests
 
     public abstract class BaseTestClass : UnoTestClass
     {
-        public const string AndroidApplication = "Tools\\Android\\com.made.unosampleapp.apk";
+        public const string AndroidApplication = "com.made.unosampleapp";
+
+        public const string AndroidApplicationActivity = $"{AndroidApplication}.MainActivity";
 
         public const string WasmApplication = "http://localhost:5000";
 
@@ -27,16 +29,6 @@ namespace UnoSampleAppTests
         public override void StopApp()
         {
             base.StopApp();
-        }
-
-        protected void SkipForPlatform(Type skipType, string message = default)
-        {
-            if (this.Options == null || this.Options.AppManagerOptions.GetType() != skipType)
-            {
-                return;
-            }
-
-            Assert.Ignore($"Cannot currently run tests for {skipType.Name}. {message}");
         }
     }
 }

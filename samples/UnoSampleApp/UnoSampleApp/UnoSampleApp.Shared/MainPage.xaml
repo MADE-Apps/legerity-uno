@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     mc:Ignorable="d">
 
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -12,6 +11,7 @@
             <TextBlock
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="TitleTextBlock"
+                AutomationProperties.AccessibilityView="Raw"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="Control samples" />
 
@@ -20,6 +20,7 @@
                 x:Uid="SampleAppBarButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleAppBarButton"
+                AutomationProperties.AccessibilityView="Raw"
                 Icon="Add"
                 Label="Add" />
             <AppBarToggleButton
@@ -27,6 +28,7 @@
                 x:Uid="SampleAppBarToggleButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleAppBarToggleButton"
+                AutomationProperties.AccessibilityView="Raw"
                 Icon="Shuffle"
                 Label="SymbolIcon" />
             <Button
@@ -34,12 +36,14 @@
                 x:Uid="SampleButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleButton"
+                AutomationProperties.AccessibilityView="Raw"
                 Content="Standard XAML button" />
             <CheckBox
                 x:Name="SampleCheckBox"
                 x:Uid="SampleCheckBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleCheckBox"
+                AutomationProperties.AccessibilityView="Raw"
                 Content="Two-state CheckBox" />
             <ComboBox
                 x:Name="SampleComboBox"
@@ -47,6 +51,7 @@
                 Width="200"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleComboBox"
+                AutomationProperties.AccessibilityView="Raw"
                 Header="Colors"
                 PlaceholderText="Pick a color">
                 <x:String>Blue</x:String>
@@ -54,11 +59,12 @@
                 <x:String>Red</x:String>
                 <x:String>Yellow</x:String>
             </ComboBox>
-            <win:CommandBar
+            <CommandBar
                 x:Name="SampleCommandBar"
                 x:Uid="SampleCommandBar"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleCommandBar"
+                AutomationProperties.AccessibilityView="Raw"
                 Background="Transparent"
                 DefaultLabelPosition="Right"
                 IsOpen="False">
@@ -80,18 +86,20 @@
                         Icon="Setting"
                         Label="Settings" />
                 </CommandBar.SecondaryCommands>
-            </win:CommandBar>
+            </CommandBar>
             <DatePicker
                 x:Name="SampleDatePicker"
                 x:Uid="SampleDatePicker"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleDatePicker"
+                AutomationProperties.AccessibilityView="Raw"
                 Header="Pick a date" />
             <HyperlinkButton
                 x:Name="SampleHyperlinkButton"
                 x:Uid="SampleHyperlinkButton"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleHyperlinkButton"
+                AutomationProperties.AccessibilityView="Raw"
                 Content="Microsoft home page"
                 NavigateUri="http://www.microsoft.com" />
             <TextBlock
@@ -99,18 +107,21 @@
                 x:Uid="SampleTextBlock"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTextBlock"
+                AutomationProperties.AccessibilityView="Raw"
                 Text="I am a TextBlock" />
             <TextBox
                 x:Name="SampleTextBox"
                 x:Uid="SampleTextBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleTextBox"
+                AutomationProperties.AccessibilityView="Raw"
                 AutomationProperties.Name="simple TextBox" />
             <TextBox
                 x:Name="SampleReadonlyTextBox"
                 x:Uid="SampleReadonlyTextBox"
                 Margin="0,0,0,12"
                 AutomationProperties.AutomationId="SampleReadonlyTextBox"
+                AutomationProperties.AccessibilityView="Raw"
                 AutomationProperties.Name="simple readonly TextBox"
                 IsReadOnly="True"
                 Text="Sample readonly TextBox" />
@@ -118,7 +129,8 @@
                 x:Name="SampleTimePicker"
                 x:Uid="SampleTimePicker"
                 Margin="0,0,0,12"
-                AutomationProperties.AutomationId="SampleTimePicker" />
+                AutomationProperties.AutomationId="SampleTimePicker"
+                AutomationProperties.AccessibilityView="Raw"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

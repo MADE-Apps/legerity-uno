@@ -1,7 +1,5 @@
 namespace Legerity.Uno.Elements
 {
-    using System;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -11,7 +9,7 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core CheckBox control.
     /// </summary>
-    public class CheckBox : UnoElementWrapper
+    public partial class CheckBox : UnoElementWrapper
     {
         private const string CheckedValue = "1";
 
@@ -47,7 +45,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets a value indicating whether the check box is in the indeterminate state.
         /// </summary>
-        public bool IsIndeterminate => this.Element.GetAttribute("Toggle.ToggleState") == IndeterminateValue;
+        public bool IsIndeterminate => this.DetermineIsIndeterminate();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
@@ -93,14 +91,21 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => this.Element.GetAttribute("Toggle.ToggleState") == CheckedValue,
-                _ => this.Element.FindElementByXamlName("CheckGlyph").Displayed
+                AndroidElement _ => this.DetermineIsCheckedAndroid(),
+                IOSElement _ => this.DetermineIsCheckedIOS(),
+                WindowsElement _ => this.DetermineIsCheckedWindows(),
+                _ => this.DetermineIsCheckedWasm()
+            };
+        }
+
+        private bool DetermineIsIndeterminate()
+        {
+            return this.Element switch
+            {
+                AndroidElement _ => this.DetermineIsIndeterminateAndroid(),
+                IOSElement _ => this.DetermineIsIndeterminateIOS(),
+                WindowsElement _ => this.DetermineIsIndeterminateWindows(),
+                _ => this.DetermineIsIndeterminateWasm()
             };
         }
     }

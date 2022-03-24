@@ -4,9 +4,9 @@
 namespace Legerity.Uno.Extensions
 {
     using System;
+    using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
-    using OpenQA.Selenium.Appium.Android.UiAutomator;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
@@ -29,7 +29,7 @@ namespace Legerity.Uno.Extensions
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
         public static RemoteWebElement FindWebElementByXamlType(this RemoteWebElement element, string xamlType)
         {
-            return element.FindElement(ByExtensions.WebXamlType(xamlType)) as RemoteWebElement;
+            return element.FindElement(ByExtras.WebXamlType(xamlType)) as RemoteWebElement;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Legerity.Uno.Extensions
                 IOSElement _ =>
                     element.FindElement(By.Name(name)) as RemoteWebElement,
                 AndroidElement androidElement =>
-                    androidElement.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(name)),
+                    element.FindElement(ByExtras.AndroidXamlName(name)) as RemoteWebElement,
                 WindowsElement _ =>
                     element.FindElement(By.Name(name)) as RemoteWebElement,
                 _ =>
-                    element.FindElement(ByExtensions.WebXamlName(name)) as RemoteWebElement
+                    element.FindElement(ByExtras.WebXamlName(name)) as RemoteWebElement
             };
         }
 
@@ -81,41 +81,12 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
-                AndroidElement androidElement =>
-                    androidElement.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(automationId)),
+                AndroidElement _ =>
+                    element.FindElement(ByExtras.AndroidXamlAutomationId(automationId)) as RemoteWebElement,
                 WindowsElement _ =>
-                    element.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
+                    element.FindElement(WindowsByExtras.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
-                    element.FindElement(ByExtensions.WebAutomationId(automationId)) as RemoteWebElement
-            };
-        }
-
-        /// <summary>
-        /// Gets the value of the specified XAML name for this element.
-        /// </summary>
-        /// <param name="element">The element to retrieve a XAML name for.</param>
-        /// <returns>The element's XAML name.</returns>
-        public static string GetXamlName(this RemoteWebElement element)
-        {
-            return element switch
-            {
-                WindowsElement _ => element.GetAttribute("Name"),
-                _ => element.GetAttribute("xamlname")
-            };
-        }
-
-        /// <summary>
-        /// Gets the value of the specified automation ID for this element.
-        /// </summary>
-        /// <param name="element">The element to retrieve an automation ID for.</param>
-        /// <returns>The element's automation ID.</returns>
-        public static string GetAutomationId(this RemoteWebElement element)
-        {
-            return element switch
-            {
-                AndroidElement _ => element.GetAttribute("content-desc"),
-                WindowsElement _ => element.GetAttribute("AutomationId"),
-                _ => element.GetAttribute("xuid")
+                    element.FindElement(ByExtras.WebXamlAutomationId(automationId)) as RemoteWebElement
             };
         }
 

@@ -1,7 +1,5 @@
 namespace Legerity.Uno.Elements
 {
-    using System;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -11,7 +9,7 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core TextBox control.
     /// </summary>
-    public class TextBox : UnoElementWrapper
+    public partial class TextBox : UnoElementWrapper
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBox"/> class.
@@ -94,10 +92,10 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ => this.Element,
-                IOSElement _ => this.Element,
-                WindowsElement _ => this.Element,
-                _ => this.Element.FindWebElementByXamlType("Windows.UI.Xaml.Controls.TextBoxView")
+                AndroidElement _ => this.DetermineInputElementAndroid(),
+                IOSElement _ => this.DetermineInputElementIOS(),
+                WindowsElement _ => this.DetermineInputElementWindows(),
+                _ => this.DetermineInputElementWasm()
             };
         }
 
@@ -105,10 +103,10 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ => this.InputElement.Text ?? string.Empty,
-                IOSElement _ => this.InputElement.Text ?? string.Empty,
-                WindowsElement _ => this.InputElement.GetAttribute("Value.Value") ?? string.Empty,
-                _ => this.InputElement.GetAttribute("value") ?? string.Empty
+                AndroidElement _ => this.DetermineTextAndroid(),
+                IOSElement _ => this.DetermineTextIOS(),
+                WindowsElement _ => this.DetermineTextWindows(),
+                _ => this.DetermineTextWasm()
             };
         }
 
@@ -116,11 +114,10 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ => !this.InputElement.Enabled,
-                IOSElement _ => !this.InputElement.Enabled,
-                WindowsElement _ =>
-                    this.InputElement.GetAttribute("Value.IsReadonly").Equals("True", StringComparison.CurrentCultureIgnoreCase),
-                _ => !string.IsNullOrWhiteSpace(this.InputElement.GetAttribute("readonly"))
+                AndroidElement _ => this.DetermineIsReadonlyAndroid(),
+                IOSElement _ => this.DetermineIsReadonlyIOS(),
+                WindowsElement _ => this.DetermineIsReadonlyWindows(),
+                _ => this.DetermineIsReadonlyWasm()
             };
         }
     }

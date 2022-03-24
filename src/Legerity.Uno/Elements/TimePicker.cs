@@ -1,10 +1,7 @@
 namespace Legerity.Uno.Elements
 {
     using System;
-    using System.Linq;
-    using System.Text.RegularExpressions;
     using Legerity.Extensions;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -14,8 +11,12 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core TimePicker control.
     /// </summary>
-    public class TimePicker : UnoElementWrapper
+    public partial class TimePicker : UnoElementWrapper
     {
+        private const string HourLoopingSelectorName = "HourLoopingSelector";
+        private const string MinuteLoopingSelectorName = "MinuteLoopingSelector";
+        private const string AcceptButtonName = "AcceptButton";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TimePicker"/> class.
         /// </summary>
@@ -67,41 +68,24 @@ namespace Legerity.Uno.Elements
             this.Element.Click();
 
             // Finds the popup and change values.
-            RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutQuery());
-            this.FindSelectorValue(popup.FindWebElement(this.HourSelectorQuery()), time.ToString("%h")).Click();
-            this.FindSelectorValue(popup.FindWebElement(this.MinuteSelectorQuery()), time.ToString("mm")).Click();
-            popup.FindWebElement(this.AcceptButtonQuery()).Click();
+            RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());
+            this.FindSelectorChildElementByValue(popup.FindWebElement(this.HourSelectorLocator()), time.ToString("%h")).Click();
+            this.FindSelectorChildElementByValue(popup.FindWebElement(this.MinuteSelectorLocator()), time.ToString("mm")).Click();
+            popup.FindWebElement(this.AcceptButtonLocator()).Click();
         }
 
         private TimeSpan? DetermineSelectedTime()
         {
-            string hour = string.Empty;
-            string minute = string.Empty;
+            string hour;
+            string minute;
 
-            switch (this.Element)
+            (hour, minute) = this.Element switch
             {
-                case AndroidElement _:
-                    break;
-                case IOSElement _:
-                    break;
-                case WindowsElement _:
-                    string timeElementText = this.Element
-                        .FindWebElement(Windows.Extensions.ByExtensions.AutomationId("FlyoutButton"))
-                        .GetAttribute("Name")
-                        .Replace(" time picker", string.Empty)
-                        .Trim();
-
-                    var regex = new Regex(@"\d+");
-
-                    string[] timeString = timeElementText.Split(':');
-                    hour = regex.Match(timeString.FirstOrDefault() ?? string.Empty).Value;
-                    minute = regex.Match(timeString.LastOrDefault() ?? string.Empty).Value;
-                    break;
-                default:
-                    hour = this.Element.FindElementByXamlName("HourTextBlock").Text;
-                    minute = this.Element.FindElementByXamlName("MinuteTextBlock").Text;
-                    break;
-            }
+                AndroidElement _ => this.DetermineSelectedTimeAndroid(),
+                IOSElement _ => this.DetermineSelectedTimeIOS(),
+                WindowsElement _ => this.DetermineSelectedTimeWindows(),
+                _ => this.DetermineSelectedTimeWasm()
+            };
 
             return string.IsNullOrWhiteSpace(hour) ||
                    string.IsNullOrWhiteSpace(minute) ?
@@ -109,78 +93,58 @@ namespace Legerity.Uno.Elements
                 TimeSpan.TryParse($"{hour}:{minute}", out TimeSpan time) ? time : default(TimeSpan?);
         }
 
-        private IWebElement FindSelectorValue(RemoteWebElement selector, string value)
+        private IWebElement FindSelectorChildElementByValue(RemoteWebElement element, string value)
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => selector.FindElementByName(value),
-                _ => selector.FindElementByText(value)
+                AndroidElement _ => FindSelectorChildElementByValueAndroid(element, value),
+                IOSElement _ => FindSelectorChildElementByValueIOS(element, value),
+                WindowsElement _ => FindSelectorChildElementByValueWindows(element, value),
+                _ => FindSelectorChildElementByValueWasm(element, value)
             };
         }
 
-        private By FlyoutQuery()
+        private By FlyoutLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("TimePickerFlyoutPresenter"),
-                _ => ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.TimePickerFlyoutPresenter")
+                AndroidElement _ => FlyoutLocatorAndroid(),
+                IOSElement _ => FlyoutLocatorIOS(),
+                WindowsElement _ => FlyoutLocatorWindows(),
+                _ => FlyoutLocatorWasm()
             };
         }
 
-        private By HourSelectorQuery()
+        private By HourSelectorLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("HourLoopingSelector"),
-                _ => ByExtensions.WebXamlName("HourLoopingSelector")
+                AndroidElement _ => HourSelectorLocatorAndroid(),
+                IOSElement _ => HourSelectorLocatorIOS(),
+                WindowsElement _ => HourSelectorLocatorWindows(),
+                _ => HourSelectorLocatorWasm()
             };
         }
 
-        private By MinuteSelectorQuery()
+        private By MinuteSelectorLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("MinuteLoopingSelector"),
-                _ => ByExtensions.WebXamlName("MinuteLoopingSelector")
+                AndroidElement _ => MinuteSelectorLocatorAndroid(),
+                IOSElement _ => MinuteSelectorLocatorIOS(),
+                WindowsElement _ => MinuteSelectorLocatorWindows(),
+                _ => MinuteSelectorLocatorWasm()
             };
         }
 
-        private By AcceptButtonQuery()
+        private By AcceptButtonLocator()
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ => Windows.Extensions.ByExtensions.AutomationId("AcceptButton"),
-                _ => ByExtensions.WebXamlName("AcceptButton")
+                AndroidElement _ => AcceptButtonLocatorAndroid(),
+                IOSElement _ => AcceptButtonLocatorIOS(),
+                WindowsElement _ => AcceptButtonLocatorWindows(),
+                _ => AcceptButtonLocatorWasm()
             };
         }
     }

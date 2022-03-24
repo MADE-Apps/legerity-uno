@@ -3,8 +3,6 @@
 
 namespace Legerity.Uno.Elements
 {
-    using System;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
@@ -13,10 +11,8 @@ namespace Legerity.Uno.Elements
     /// <summary>
     /// Defines a <see cref="RemoteWebElement"/> wrapper for the core AppBarToggleButton control.
     /// </summary>
-    public class AppBarToggleButton : AppBarButton
+    public partial class AppBarToggleButton : AppBarButton
     {
-        private const string ToggleOffValue = "0";
-
         private const string ToggleOnValue = "1";
 
         /// <summary>
@@ -79,17 +75,10 @@ namespace Legerity.Uno.Elements
         {
             return this.Element switch
             {
-                AndroidElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for Android has not been implemented yet."),
-                IOSElement _ =>
-                    throw new PlatformNotSupportedException(
-                        "An implementation for iOS has not been implemented yet."),
-                WindowsElement _ =>
-                    this.Element.GetAttribute("Toggle.ToggleState") == ToggleOnValue,
-                _ =>
-                    this.Element.FindElementByXamlName("CheckedHighlightBackground")
-                        .GetCssValue("opacity") != ToggleOffValue
+                AndroidElement _ => this.DetermineIsOnAndroid(),
+                IOSElement _ => this.DetermineIsOnIOS(),
+                WindowsElement _ => this.DetermineIsOnWindows(),
+                _ => this.DetermineIsOnWasm()
             };
         }
     }
