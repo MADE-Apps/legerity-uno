@@ -9,27 +9,27 @@ namespace Legerity.Uno.Elements
     {
         private static By FlyoutLocatorWasm()
         {
-            return ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.DatePickerFlyoutPresenter");
+            return ByExtras.WebXamlType("Windows.UI.Xaml.Controls.DatePickerFlyoutPresenter");
         }
 
         private static By DaySelectorLocatorWasm()
         {
-            return ByExtensions.WebXamlName(DayLoopingSelectorName);
+            return ByExtras.WebXamlName(DayLoopingSelectorName);
         }
 
         private static By MonthSelectorLocatorWasm()
         {
-            return ByExtensions.WebXamlName(MonthLoopingSelectorName);
+            return ByExtras.WebXamlName(MonthLoopingSelectorName);
         }
 
         private static By YearSelectorLocatorWasm()
         {
-            return ByExtensions.WebXamlName(YearLoopingSelectorName);
+            return ByExtras.WebXamlName(YearLoopingSelectorName);
         }
 
         private static By AcceptButtonLocatorWasm()
         {
-            return ByExtensions.WebXamlName(AcceptButtonName);
+            return ByExtras.WebXamlName(AcceptButtonName);
         }
 
         private static IWebElement FindSelectorChildElementByValueWasm(IFindsByName element, string value)

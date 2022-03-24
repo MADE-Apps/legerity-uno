@@ -28,7 +28,7 @@ namespace Legerity.Uno.Extensions
         /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
         public static RemoteWebElement FindWebElementByXamlType(this RemoteWebDriver driver, string xamlType)
         {
-            return driver.FindElement(ByExtensions.WebXamlType(xamlType)) as RemoteWebElement;
+            return driver.FindElement(ByExtras.WebXamlType(xamlType)) as RemoteWebElement;
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Legerity.Uno.Extensions
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(By.Name(name)) as RemoteWebElement,
                 _ =>
-                    driver.FindElement(ByExtensions.WebXamlName(name)) as RemoteWebElement
+                    driver.FindElement(ByExtras.WebXamlName(name)) as RemoteWebElement
             };
         }
 
@@ -80,12 +80,12 @@ namespace Legerity.Uno.Extensions
         {
             return driver switch
             {
-                AndroidDriver<AndroidElement> androidDriver =>
-                    androidDriver.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionContains(automationId)),
+                AndroidDriver<AndroidElement> _ =>
+                    driver.FindElement(ByExtras.AndroidXamlAutomationId(automationId)) as RemoteWebElement,
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
-                    driver.FindElement(ByExtensions.WebAutomationId(automationId)) as RemoteWebElement
+                    driver.FindElement(ByExtras.WebXamlAutomationId(automationId)) as RemoteWebElement
             };
         }
     }

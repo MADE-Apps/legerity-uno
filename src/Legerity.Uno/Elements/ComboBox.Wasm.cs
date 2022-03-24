@@ -11,7 +11,7 @@ namespace Legerity.Uno.Elements
     {
         private static By ComboBoxItemLocatorWasm()
         {
-            return ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.ComboBoxItem");
+            return ByExtras.WebXamlType("Windows.UI.Xaml.Controls.ComboBoxItem");
         }
 
         private RemoteWebElement DetermineListElementWasm(string name)
@@ -24,7 +24,7 @@ namespace Legerity.Uno.Elements
 
         private string DetermineSelectedItemWasm()
         {
-            return this.FindElements(ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.ContentPresenter"))
+            return this.FindElements(ByExtras.WebXamlType("Windows.UI.Xaml.Controls.ContentPresenter"))
                 .LastOrDefault()?
                 .FindWebElement(By.TagName("p"))?
                 .Text;

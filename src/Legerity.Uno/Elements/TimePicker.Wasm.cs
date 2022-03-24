@@ -8,22 +8,22 @@ namespace Legerity.Uno.Elements
     {
         private static By FlyoutLocatorWasm()
         {
-            return ByExtensions.WebXamlType("Windows.UI.Xaml.Controls.TimePickerFlyoutPresenter");
+            return ByExtras.WebXamlType("Windows.UI.Xaml.Controls.TimePickerFlyoutPresenter");
         }
 
         private static By HourSelectorLocatorWasm()
         {
-            return ByExtensions.WebXamlName(HourLoopingSelectorName);
+            return ByExtras.WebXamlName(HourLoopingSelectorName);
         }
 
         private static By MinuteSelectorLocatorWasm()
         {
-            return ByExtensions.WebXamlName(MinuteLoopingSelectorName);
+            return ByExtras.WebXamlName(MinuteLoopingSelectorName);
         }
 
         private static By AcceptButtonLocatorWasm()
         {
-            return ByExtensions.WebXamlName(AcceptButtonName);
+            return ByExtras.WebXamlName(AcceptButtonName);
         }
 
         private static IWebElement FindSelectorChildElementByValueWasm(IWebElement element, string value)

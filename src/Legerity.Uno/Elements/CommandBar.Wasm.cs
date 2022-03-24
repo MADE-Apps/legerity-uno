@@ -7,17 +7,17 @@ namespace Legerity.Uno.Elements
     {
         private static By AppBarButtonItemLocatorWasm()
         {
-            return ByExtensions.WebXamlType(AppBarButton.WindowsType);
+            return ByExtras.WebXamlType(AppBarButton.WindowsType);
         }
 
         private static By SecondaryOverflowPopupLocatorWasm()
         {
-            return ByExtensions.WebXamlName("OverflowContentRoot");
+            return ByExtras.WebXamlName("OverflowContentRoot");
         }
 
         private static By SecondaryOverflowButtonLocatorWasm()
         {
-            return ByExtensions.WebXamlName(MoreButtonName);
+            return ByExtras.WebXamlName(MoreButtonName);
         }
     }
 }
