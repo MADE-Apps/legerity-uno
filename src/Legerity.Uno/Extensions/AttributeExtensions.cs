@@ -1,5 +1,6 @@
 namespace Legerity.Uno.Extensions
 {
+    using Legerity.Android.Extensions;
     using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
@@ -37,11 +38,6 @@ namespace Legerity.Uno.Extensions
                 WindowsElement _ => Legerity.Windows.Extensions.AttributeExtensions.GetAutomationId(element),
                 _ => element.GetAttribute("xuid")
             };
-        }
-
-        public static string GetContentDescription(this IWebElement element)
-        {
-            return element.GetAttribute("content-desc");
         }
     }
 }

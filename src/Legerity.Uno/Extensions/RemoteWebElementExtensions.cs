@@ -4,6 +4,7 @@
 namespace Legerity.Uno.Extensions
 {
     using System;
+    using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
     using OpenQA.Selenium.Appium.iOS;
@@ -83,7 +84,7 @@ namespace Legerity.Uno.Extensions
                 AndroidElement _ =>
                     element.FindElement(ByExtras.AndroidXamlAutomationId(automationId)) as RemoteWebElement,
                 WindowsElement _ =>
-                    element.FindElement(Windows.Extensions.ByExtensions.AutomationId(automationId)) as RemoteWebElement,
+                    element.FindElement(WindowsByExtras.AutomationId(automationId)) as RemoteWebElement,
                 _ =>
                     element.FindElement(ByExtras.WebXamlAutomationId(automationId)) as RemoteWebElement
             };

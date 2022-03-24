@@ -1,8 +1,8 @@
 namespace Legerity.Uno.Elements
 {
     using System.Linq;
+    using Legerity.Android.Extensions;
     using Legerity.Extensions;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 

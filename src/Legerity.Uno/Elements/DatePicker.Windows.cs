@@ -1,6 +1,8 @@
 namespace Legerity.Uno.Elements
 {
     using System.Text.RegularExpressions;
+    using Legerity.Extensions;
+    using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Internal;
 
@@ -8,27 +10,27 @@ namespace Legerity.Uno.Elements
     {
         private static By FlyoutLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId("DatePickerFlyoutPresenter");
+            return WindowsByExtras.AutomationId("DatePickerFlyoutPresenter");
         }
 
         private static By DaySelectorLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(DayLoopingSelectorName);
+            return WindowsByExtras.AutomationId(DayLoopingSelectorName);
         }
 
         private static By MonthSelectorLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(MonthLoopingSelectorName);
+            return WindowsByExtras.AutomationId(MonthLoopingSelectorName);
         }
 
         private static By YearSelectorLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(YearLoopingSelectorName);
+            return WindowsByExtras.AutomationId(YearLoopingSelectorName);
         }
 
         private static By AcceptButtonLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(AcceptButtonName);
+            return WindowsByExtras.AutomationId(AcceptButtonName);
         }
 
         private static IWebElement FindSelectorChildElementByValueWindows(IFindsByName element, string value)
@@ -38,8 +40,8 @@ namespace Legerity.Uno.Elements
 
         private (string day, string month, string year) DetermineSelectedDateWindows()
         {
-            string dateString = this.FindElement(Windows.Extensions.ByExtensions.AutomationId("FlyoutButton"))
-                .GetAttribute("Name")
+            string dateString = this.FindElement(WindowsByExtras.AutomationId("FlyoutButton"))
+                .GetName()
                 .Replace("Pick a date ", string.Empty)
                 .Replace(" date picker", string.Empty)
                 .Replace(",", string.Empty);

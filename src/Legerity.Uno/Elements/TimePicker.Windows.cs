@@ -3,6 +3,7 @@ namespace Legerity.Uno.Elements
     using System.Linq;
     using System.Text.RegularExpressions;
     using Legerity.Extensions;
+    using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Internal;
 
@@ -10,22 +11,22 @@ namespace Legerity.Uno.Elements
     {
         private static By FlyoutLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId("TimePickerFlyoutPresenter");
+            return WindowsByExtras.AutomationId("TimePickerFlyoutPresenter");
         }
 
         private static By HourSelectorLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(HourLoopingSelectorName);
+            return WindowsByExtras.AutomationId(HourLoopingSelectorName);
         }
 
         private static By MinuteSelectorLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(MinuteLoopingSelectorName);
+            return WindowsByExtras.AutomationId(MinuteLoopingSelectorName);
         }
 
         private static By AcceptButtonLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(AcceptButtonName);
+            return WindowsByExtras.AutomationId(AcceptButtonName);
         }
 
         private static IWebElement FindSelectorChildElementByValueWindows(IFindsByName element, string value)
@@ -35,8 +36,8 @@ namespace Legerity.Uno.Elements
 
         private (string hour, string minute) DetermineSelectedTimeWindows()
         {
-            string timeElementText = this.FindWebElement(Windows.Extensions.ByExtensions.AutomationId("FlyoutButton"))
-                .GetAttribute("Name")
+            string timeElementText = this.FindWebElement(WindowsByExtras.AutomationId("FlyoutButton"))
+                .GetName()
                 .Replace(" time picker", string.Empty)
                 .Trim();
 

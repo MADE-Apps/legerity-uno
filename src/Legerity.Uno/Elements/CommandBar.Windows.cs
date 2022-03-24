@@ -1,5 +1,6 @@
 namespace Legerity.Uno.Elements
 {
+    using Legerity.Windows;
     using OpenQA.Selenium;
 
     public partial class CommandBar
@@ -11,12 +12,12 @@ namespace Legerity.Uno.Elements
 
         private static By SecondaryOverflowPopupLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId("OverflowPopup");
+            return WindowsByExtras.AutomationId("OverflowPopup");
         }
 
         private static By SecondaryOverflowButtonLocatorWindows()
         {
-            return Windows.Extensions.ByExtensions.AutomationId(MoreButtonName);
+            return WindowsByExtras.AutomationId(MoreButtonName);
         }
     }
 }
