@@ -3,10 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>Legerity for Uno - Framework for UI tests with Selenium/Appium</Product>
+    <Product>Legerity for Uno Platform - Framework for cross-platform UI tests with Selenium/Appium</Product>
     <Description>
       This package is an Uno Platform extension for speeding up the development of automated UI tests with Selenium/Appium including:
-      - 
+      - UnoElementWrapper, for creating element wrappers for Uno Platform controls
+      - AppBarButton, a clickable app bar button element
+      - AppBarToggleButton, an app bar button element with a toggle state
+      - Button, a clickable button element
+      - CheckBox, a checkable element
+      - ComboBox, a drop down selector
+      - CommandBar, a wrapper element for displaying app bar button elements
+      - DatePicker, an element for selecting and validating dates
+      - HyperlinkButton, a clickable URL button element
+      - TextBlock, a readonly text element
+      - TextBox, a text input element
+      - TimePicker, an element for selecting and validating time
     </Description>
     <PackageTags>Appium Selenium WindowsDriver WinAppDriver Windows WinUI Uno Platform Android iOS WebAssembly</PackageTags>
     <RootNamespace>Legerity.Uno</RootNamespace>
