@@ -69,20 +69,32 @@
                 DefaultLabelPosition="Right"
                 IsOpen="False">
                 <AppBarButton
-                    x:Name="addButton"
+                    x:Name="BarAddButton"
+                    x:Uid="BarAddButton"
+                    AutomationProperties.AutomationId="BarAddButton"
+                    AutomationProperties.AccessibilityView="Raw"
                     Icon="Add"
                     Label="Add" />
                 <AppBarButton
-                    x:Name="editButton"
+                    x:Name="BarEditButton"
+                    x:Uid="BarEditButton"
+                    AutomationProperties.AutomationId="BarEditButton"
+                    AutomationProperties.AccessibilityView="Raw"
                     Icon="Edit"
                     Label="Edit" />
                 <AppBarButton
-                    x:Name="shareButton"
+                    x:Name="BarShareButton"
+                    x:Uid="BarShareButton"
+                    AutomationProperties.AutomationId="BarShareButton"
+                    AutomationProperties.AccessibilityView="Raw"
                     Icon="Share"
                     Label="Share" />
                 <CommandBar.SecondaryCommands>
                     <AppBarButton
-                        x:Name="settingsButton"
+                        x:Name="BarSettingsButton"
+                        x:Uid="BarSettingsButton"
+                        AutomationProperties.AutomationId="BarSettingsButton"
+                        AutomationProperties.AccessibilityView="Raw"
                         Icon="Setting"
                         Label="Settings" />
                 </CommandBar.SecondaryCommands>
