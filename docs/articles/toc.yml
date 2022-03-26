@@ -1,8 +1,12 @@
-- name: General
+- name: Get Started
   items:
-    - name: Get Started
+    - name: Setup
       topicHref: get-started.md
-    - name: Preparing your apps
+    - name: Preparing Your Apps
       topicHref: prepare-uno-platform-apps.md
     - name: FAQs
       topicHref: faqs.md
+- name: How Tos
+  items:
+    - name: Page Object Pattern
+      topicHref: page-object-pattern.md
