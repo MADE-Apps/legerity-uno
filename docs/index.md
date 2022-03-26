@@ -17,7 +17,7 @@ title: Home
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Get Started](articles/intro.md)
+[Get Started](articles/get-started.md)
 
 </span>
   </div>
@@ -36,7 +36,7 @@ title: Home
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Discover More](articles/intro.md)
+[Discover More](articles/get-started.md)
 
 </span>
   </div>
@@ -66,7 +66,7 @@ title: Home
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Discover More](articles/intro.md)
+[Discover More](articles/get-started.md)
 
 </span>
   </div>
@@ -86,7 +86,7 @@ title: Home
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Discover More](articles/intro.md)
+[Discover More](articles/get-started.md)
 
 </span>
   </div>
@@ -116,7 +116,7 @@ title: Home
   <div class="hero-actions mb-5">
 <span class="button accent-button">
 
-[Discover More](articles/intro.md)
+[Discover More](articles/get-started.md)
 
 </span>
   </div>

@@ -1,5 +1,5 @@
-- name: Overview
-  topicHref: intro.md
+- name: Get Started
+  topicHref: get-started.md
 - name: Get started
   items:
     - name: Installing Legerity for Uno packages
