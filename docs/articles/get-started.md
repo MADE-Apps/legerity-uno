@@ -5,7 +5,7 @@ title: Get Started
 
 # Setup
 
-Legerity for Uno Platform is an extension framework to the core [Legerity framework](https://made-apps.github.io/legerity/). It is designed to be used for writing automated UI tests once for your Uno Platform applications with C#.
+Legerity for Uno Platform is an extension framework to the core [Legerity framework](https://made-apps.github.io/legerity/). It is designed to be used for writing automated UI tests once for your [Uno Platform applications](https://platform.uno/) with C#.
 
 ## Getting Legerity for Uno Platform
 
