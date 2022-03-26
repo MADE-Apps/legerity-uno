@@ -10,3 +10,29 @@
   items:
     - name: Page Object Pattern
       topicHref: page-object-pattern.md
+    - name: UI Element Wrappers
+      topicHref: ui-element-wrappers.md
+- name: Elements
+  items:
+    - name: AppBarButton
+      topicHref: elements/appbarbutton.md
+    - name: AppBarToggleButton
+      topicHref: elements/appbartogglebutton.md
+    - name: Button
+      topicHref: elements/button.md
+    - name: CheckBox
+      topicHref: elements/checkbox.md
+    - name: ComboBox
+      topicHref: elements/combobox.md
+    - name: CommandBar
+      topicHref: elements/commandbar.md
+    - name: DatePicker
+      topicHref: elements/datepicker.md
+    - name: HyperlinkButton
+      topicHref: elements/hyperlinkbutton.md
+    - name: TextBlock
+      topicHref: elements/textblock.md
+    - name: TextBox
+      topicHref: elements/textbox.md
+    - name: TimePicker
+      topicHref: elements/timepicker.md
