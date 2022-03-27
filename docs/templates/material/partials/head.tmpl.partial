@@ -8,15 +8,15 @@
   <meta name="title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
   <meta name="generator" content="docfx {{_docfxVersion}}">
   {{#_description}}<meta name="description" content="{{_description}}">{{/_description}}
-  <meta property="og:url" content="https://made-apps.github.io/legerity-uno/">
+  <meta property="og:url" content="https://made-apps.github.io/legerity-uno/{{_path}}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Legerity for Uno Platform ">
+  <meta property="og:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
   <meta property="og:description" content="Legerity for Uno Platform is a framework for writing cross-platform UI tests that can be written once and run on Windows, WebAssembly, iOS, and Android">
   <meta property="og:image" content="https://made-apps.github.io/legerity-uno/images/social.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="made-apps.github.io">
-  <meta property="twitter:url" content="https://made-apps.github.io/legerity-uno/">
-  <meta name="twitter:title" content="Legerity for Uno Platform ">
+  <meta property="twitter:url" content="https://made-apps.github.io/legerity-uno/{{_path}}">
+  <meta name="twitter:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
   <meta name="twitter:description" content="Legerity for Uno Platform is a framework for writing cross-platform UI tests that can be written once and run on Windows, WebAssembly, iOS, and Android">
   <meta name="twitter:image" content="https://made-apps.github.io/legerity-uno/images/social.png">
   <link rel="shortcut icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
