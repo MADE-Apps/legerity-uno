@@ -59,6 +59,11 @@ namespace Legerity.Uno.Elements
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
         /// <summary>
+        /// Gets the secondary (more) options button.
+        /// </summary>
+        public AppBarButton MoreButton => this.Driver.FindWebElement(this.SecondaryOverflowButtonLocator());
+
+        /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CommandBar"/> without direct casting.
         /// </summary>
         /// <param name="element">
@@ -96,8 +101,7 @@ namespace Legerity.Uno.Elements
         {
             this.VerifyElementShown(this.SecondaryOverflowButtonLocator(), TimeSpan.FromSeconds(2));
 
-            AppBarButton secondaryOverflowButton = this.Element.FindWebElement(this.SecondaryOverflowButtonLocator());
-            secondaryOverflowButton.Click();
+            this.MoreButton.Click();
 
             this.VerifyDriverElementShown(this.SecondaryOverflowPopupLocator(), TimeSpan.FromSeconds(2));
 
