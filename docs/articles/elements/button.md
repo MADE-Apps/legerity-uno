@@ -40,4 +40,3 @@ RefreshButton.Click();
 | Click() | Clicks the button |
 
 For more information, view the reference documentation: [Button](xref:Legerity.Uno.Elements.Button)
-
