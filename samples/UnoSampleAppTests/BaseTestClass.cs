@@ -11,6 +11,8 @@ namespace UnoSampleAppTests
 
         public const string AndroidApplicationActivity = $"{AndroidApplication}.MainActivity";
 
+        public const string IOSApplication = "com.madeapps.UnoSampleApp";
+
         public const string WasmApplication = "http://localhost:5000";
 
         public const string WindowsApplication = "com.madeapps.unosampleapp_7mzr475ysvhxg!App";

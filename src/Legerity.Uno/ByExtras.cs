@@ -78,5 +78,15 @@ namespace Legerity.Uno
         {
             return new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionContains(contentDesc));
         }
+
+        /// <summary>
+        /// Gets a mechanism to find elements by an iOS XAML ID.
+        /// </summary>
+        /// <param name="xuid">The XAML element ID.</param>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By IOSXamlAutomationId(string xuid)
+        {
+            return By.Name(xuid);
+        }
     }
 }
