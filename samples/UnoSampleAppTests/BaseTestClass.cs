@@ -1,6 +1,5 @@
 namespace UnoSampleAppTests
 {
-    using System;
     using Legerity;
     using Legerity.Uno;
     using NUnit.Framework;

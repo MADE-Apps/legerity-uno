@@ -3,7 +3,6 @@ namespace UnoSampleAppTests.Tests
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using Legerity;
     using Legerity.Android;
     using Legerity.IOS;
@@ -34,9 +33,8 @@ namespace UnoSampleAppTests.Tests
                 DeviceName = "iPhone SE (3rd generation) Simulator",
                 DeviceId = "56755E6F-741B-478F-BB1B-A48E05ACFE8A",
                 OSVersion = "15.4",
-                DriverUri = "http://192.168.86.168:4723/wd/hub",
-                LaunchAppiumServer = false,
-                AdditionalOptions = new []{ ("automationName", (object)"XCUITest") }
+                DriverUri = "http://192.168.86.172:4723/wd/hub",
+                LaunchAppiumServer = false
             },
             new WebAppManagerOptions(
                 WebAppDriverType.EdgeChromium,
