@@ -4,6 +4,7 @@ namespace Legerity.Uno.Extensions
     using Legerity.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
+    using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
 
     /// <summary>
@@ -20,6 +21,7 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
+                IOSElement _ => element.GetAttribute("name"),
                 AndroidElement _ => element.GetContentDescription(),
                 WindowsElement _ => element.GetName(),
                 _ => element.GetAttribute("xamlname")
@@ -35,6 +37,7 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
+                IOSElement _ => element.GetAttribute("name"),
                 AndroidElement _ => element.GetContentDescription(),
                 WindowsElement _ => Legerity.Windows.Extensions.AttributeExtensions.GetAutomationId(element),
                 _ => element.GetAttribute("xuid")

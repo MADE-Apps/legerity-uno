@@ -81,6 +81,8 @@ namespace Legerity.Uno.Extensions
         {
             return element switch
             {
+                IOSElement _ =>
+                    element.FindElement(ByExtras.IOSXamlAutomationId(automationId)) as RemoteWebElement,
                 AndroidElement _ =>
                     element.FindElement(ByExtras.AndroidXamlAutomationId(automationId)) as RemoteWebElement,
                 WindowsElement _ =>

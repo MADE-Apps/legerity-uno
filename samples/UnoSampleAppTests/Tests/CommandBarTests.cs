@@ -11,14 +11,14 @@ namespace UnoSampleAppTests.Tests
         {
         }
 
-        [TestCase("Add")]
-        [TestCase("Edit")]
+        [TestCase("BarAddButton")]
+        [TestCase("BarEditButton")]
         public void ShouldClickPrimaryButton(string primaryButton)
         {
             new ControlsPage().Invoke(page => page.CommandBar.ClickPrimaryButton(primaryButton));
         }
 
-        [TestCase("Settings")]
+        [TestCase("BarSettingsButton")]
         public void ShouldClickSecondaryButton(string secondaryButton)
         {
             new ControlsPage().Invoke(page => page.CommandBar.ClickSecondaryButton(secondaryButton));

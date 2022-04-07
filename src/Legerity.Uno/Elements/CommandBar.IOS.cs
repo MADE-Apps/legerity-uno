@@ -7,12 +7,12 @@ namespace Legerity.Uno.Elements
         private static By PrimaryAppBarButtonItemLocatorIOS()
         {
             return By.XPath(
-                ".//*[@label='PrimaryItemsControl']/XCUIElementTypeOther/XCUIElementTypeOther/child::*");
+                ".//*[@name='PrimaryItemsControl']/XCUIElementTypeOther/XCUIElementTypeOther/child::*");
         }
 
         private static By SecondaryAppBarButtonItemLocatorIOS()
         {
-            return By.XPath(".//*[@label='ItemsPresenter']/XCUIElementTypeOther/child::*");
+            return By.XPath(".//*[@name='ItemsPresenter']/XCUIElementTypeOther/child::*");
         }
 
         private static By SecondaryOverflowButtonLocatorIOS()
