@@ -1,26 +1,28 @@
 namespace Legerity.Uno.Elements
 {
-    using System;
     using OpenQA.Selenium;
 
     public partial class CommandBar
     {
-        private static By AppBarButtonItemLocatorIOS()
+        private static By PrimaryAppBarButtonItemLocatorIOS()
         {
-            throw new NotImplementedException(
-                "An implementation for iOS has not been implemented yet.");
+            return By.XPath(
+                ".//*[@name='PrimaryItemsControl']/XCUIElementTypeOther/XCUIElementTypeOther/child::*");
+        }
+
+        private static By SecondaryAppBarButtonItemLocatorIOS()
+        {
+            return By.XPath(".//*[@name='ItemsPresenter']/XCUIElementTypeOther/child::*");
         }
 
         private static By SecondaryOverflowButtonLocatorIOS()
         {
-            throw new NotImplementedException(
-                "An implementation for iOS has not been implemented yet.");
+            return ByExtras.IOSXamlAutomationId(MoreButtonName);
         }
 
         private static By SecondaryOverflowPopupLocatorIOS()
         {
-            throw new NotImplementedException(
-                "An implementation for iOS has not been implemented yet.");
+            return ByExtras.IOSXamlAutomationId("OverflowContentRoot");
         }
     }
 }

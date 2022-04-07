@@ -25,7 +25,7 @@ var moreButton = RichEditCommandBar.MoreButton;
 |-|-|
 | Windows | &check; |
 | Android | &check; |
-| iOS | &cross; |
+| iOS | &check; |
 | WebAssembly | &check; |
 
 ## Properties

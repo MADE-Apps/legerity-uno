@@ -6,7 +6,6 @@ namespace Legerity.Uno.Extensions
     using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
-    using OpenQA.Selenium.Appium.Android.UiAutomator;
     using OpenQA.Selenium.Appium.iOS;
     using OpenQA.Selenium.Appium.Windows;
     using OpenQA.Selenium.Remote;
@@ -50,8 +49,8 @@ namespace Legerity.Uno.Extensions
             {
                 IOSDriver<IOSElement> _ =>
                     driver.FindElement(By.Name(name)) as RemoteWebElement,
-                AndroidDriver<AndroidElement> androidDriver =>
-                    androidDriver.FindElementByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(name)),
+                AndroidDriver<AndroidElement> _ =>
+                    driver.FindElement(ByExtras.AndroidXamlName(name)) as RemoteWebElement,
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(By.Name(name)) as RemoteWebElement,
                 _ =>
@@ -85,6 +84,8 @@ namespace Legerity.Uno.Extensions
                     driver.FindElement(ByExtras.AndroidXamlAutomationId(automationId)) as RemoteWebElement,
                 WindowsDriver<WindowsElement> _ =>
                     driver.FindElement(WindowsByExtras.AutomationId(automationId)) as RemoteWebElement,
+                IOSDriver<IOSElement> _ =>
+                    driver.FindElement(ByExtras.IOSXamlAutomationId(automationId)) as RemoteWebElement,
                 _ =>
                     driver.FindElement(ByExtras.WebXamlAutomationId(automationId)) as RemoteWebElement
             };

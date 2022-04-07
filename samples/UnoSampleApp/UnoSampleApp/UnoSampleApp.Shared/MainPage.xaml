@@ -45,6 +45,14 @@
                 AutomationProperties.AutomationId="SampleCheckBox"
                 AutomationProperties.AccessibilityView="Raw"
                 Content="Two-state CheckBox" />
+            <CheckBox
+                x:Name="SampleIndeterminateCheckBox"
+                x:Uid="SampleIndeterminateCheckBox"
+                Margin="0,0,0,12"
+                IsThreeState="True"
+                AutomationProperties.AutomationId="SampleIndeterminateCheckBox"
+                AutomationProperties.AccessibilityView="Raw"
+                Content="Three-state CheckBox" />
             <ComboBox
                 x:Name="SampleComboBox"
                 x:Uid="SampleComboBox"

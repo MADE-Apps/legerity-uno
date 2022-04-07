@@ -58,6 +58,7 @@ namespace UnoAppTests.Pages
             return this.App switch
             {
                 AndroidDriver<AndroidElement> _ => ByExtras.AndroidXamlAutomationId(automationId),
+                IOSDriver<IOSElement> _ => ByExtras.IOSXamlAutomationId(automationId),
                 WindowsDriver<WindowsElement> _ => WindowsByExtras.AutomationId(automationId),
                 _ => ByExtras.WebXamlAutomationId(automationId)
             };
@@ -110,21 +111,30 @@ namespace UnoAppTests.Tests
                 DriverUri = "http://localhost:4723/wd/hub",
                 LaunchAppiumServer = true
             },
+            new IOSAppManagerOptions
+            {
+                AppId = IOSApplication,
+                DeviceName = "iPhone SE (3rd generation) Simulator",
+                DeviceId = "56755E6F-741B-478F-BB1B-A48E05ACFE8A",
+                OSVersion = "15.4",
+                DriverUri = "http://localhost:4723/wd/hub",
+                LaunchAppiumServer = false
+            },
             new WebAppManagerOptions(
                 WebAppDriverType.EdgeChromium,
                 Path.Combine(Environment.CurrentDirectory))
             {
-                Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
+                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
             },
             new WebAppManagerOptions(
                 WebAppDriverType.Chrome,
                 Path.Combine(Environment.CurrentDirectory))
             {
-                Maximize = true, Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(10)
+                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
             },
             new WindowsAppManagerOptions(WindowsApplication)
             {
-                DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true, Maximize = true
+                DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true
             }
         };
 

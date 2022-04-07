@@ -39,3 +39,15 @@ Uno.UI.FeatureConfiguration.UIElement.AssignDOMXamlProperties = true;
 ```
 
 More information on this can be found in the [Uno Platform docs](https://platform.uno/docs/articles/uno-development/debugging-inspect-visual-tree.html#web).
+
+## Providing additional XAML automation properties for Android and iOS
+
+To get the most out of your app's XAML automation properties, you want to provide additional XAML automation properties to support interactions with Android and iOS.
+
+Adding the following additional property to your XAML elements will provide the correct XAML automation ID for elements that have content. This is required to ensure that the content isn't displayed as the element name.
+
+```xml
+AutomationProperties.AccessibilityView="Raw"
+```
+
+See [Uno Platform's tips](https://platform.uno/docs/articles/features/working-with-accessibility.html#tips) on why this is needed.

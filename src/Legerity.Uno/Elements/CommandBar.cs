@@ -116,7 +116,7 @@ namespace Legerity.Uno.Elements
             return this.Element switch
             {
                 AndroidElement _ => PrimaryAppBarButtonItemLocatorAndroid(),
-                IOSElement _ => AppBarButtonItemLocatorIOS(),
+                IOSElement _ => PrimaryAppBarButtonItemLocatorIOS(),
                 WindowsElement _ => AppBarButtonItemLocatorWindows(),
                 _ => AppBarButtonItemLocatorWasm()
             };
@@ -127,7 +127,7 @@ namespace Legerity.Uno.Elements
             return this.Element switch
             {
                 AndroidElement _ => SecondaryAppBarButtonItemLocatorAndroid(),
-                IOSElement _ => AppBarButtonItemLocatorIOS(),
+                IOSElement _ => SecondaryAppBarButtonItemLocatorIOS(),
                 WindowsElement _ => AppBarButtonItemLocatorWindows(),
                 _ => AppBarButtonItemLocatorWasm()
             };

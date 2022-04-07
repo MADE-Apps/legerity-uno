@@ -97,7 +97,7 @@ namespace Legerity.Uno.Elements
             return this.Element switch
             {
                 AndroidElement _ => ComboBoxItemLocatorAndroid(),
-                IOSElement _ => this.ComboBoxItemLocatorIOS(),
+                IOSElement _ => ComboBoxItemLocatorIOS(),
                 WindowsElement _ => ComboBoxItemLocatorWindows(),
                 _ => ComboBoxItemLocatorWasm()
             };

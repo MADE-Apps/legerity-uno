@@ -22,7 +22,7 @@ var selectedItem = ColorComboBox.SelectedItem;
 |-|-|
 | Windows | &check; |
 | Android | &check; |
-| iOS | &cross; |
+| iOS | &check; |
 | WebAssembly | &check; |
 
 ## Properties

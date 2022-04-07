@@ -1,5 +1,7 @@
 namespace Legerity.Uno
 {
+    using System;
+    using Legerity.Android;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium;
     using OpenQA.Selenium.Appium.Android.UiAutomator;
@@ -46,7 +48,7 @@ namespace Legerity.Uno
         /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
         public static By AndroidXamlName(string name)
         {
-            return AndroidContentDescription(name);
+            return AndroidByExtras.ContentDescription(name);
         }
 
         /// <summary>
@@ -56,7 +58,7 @@ namespace Legerity.Uno
         /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
         public static By AndroidXamlAutomationId(string xuid)
         {
-            return AndroidContentDescription(xuid);
+            return AndroidByExtras.ContentDescription(xuid);
         }
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace Legerity.Uno
         /// </summary>
         /// <param name="contentDesc">The content description to match exactly on.</param>
         /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        [Obsolete("AndroidContentDescription(string) will be removed in a future major release. Please use the AndroidByExtras.ContentDescription(string) instead.")]
         public static By AndroidContentDescription(string contentDesc)
         {
             return new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(contentDesc));
@@ -74,9 +77,20 @@ namespace Legerity.Uno
         /// </summary>
         /// <param name="contentDesc">The partial content description to match on.</param>
         /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        [Obsolete("AndroidPartialContentDescription(string) will be removed in a future major release. Please use the AndroidByExtras.PartialContentDescription(string) instead.")]
         public static By AndroidPartialContentDescription(string contentDesc)
         {
             return new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionContains(contentDesc));
+        }
+
+        /// <summary>
+        /// Gets a mechanism to find elements by an iOS XAML ID.
+        /// </summary>
+        /// <param name="xuid">The XAML element ID.</param>
+        /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
+        public static By IOSXamlAutomationId(string xuid)
+        {
+            return By.Name(xuid);
         }
     }
 }
