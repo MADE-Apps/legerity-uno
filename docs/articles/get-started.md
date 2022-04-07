@@ -33,10 +33,47 @@ namespace UnoAppTests
     {
         public const string AndroidApplication = "com.made.myunoapp";
         public const string AndroidApplicationActivity = $"{AndroidApplication}.MainActivity";
+        public const string IOSApplication = "com.made.myunoapp";
         public const string WasmApplication = "http://localhost:5000";
         public const string WindowsApplication = "com.madeapps.myunoapp_7mzr475ysvhxg!App";
 
         protected BaseTestClass(AppManagerOptions options) : base(options) { }
+
+        static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
+        {
+            new AndroidAppManagerOptions
+            {
+                AppId = AndroidApplication,
+                AppActivity = AndroidApplicationActivity,
+                DriverUri = "http://localhost:4723/wd/hub",
+                LaunchAppiumServer = true
+            },
+            new IOSAppManagerOptions
+            {
+                AppId = IOSApplication,
+                DeviceName = "iPhone SE (3rd generation) Simulator",
+                DeviceId = "56755E6F-741B-478F-BB1B-A48E05ACFE8A",
+                OSVersion = "15.4",
+                DriverUri = "http://localhost:4723/wd/hub",
+                LaunchAppiumServer = false
+            },
+            new WebAppManagerOptions(
+                WebAppDriverType.EdgeChromium,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
+            },
+            new WebAppManagerOptions(
+                WebAppDriverType.Chrome,
+                Path.Combine(Environment.CurrentDirectory))
+            {
+                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
+            },
+            new WindowsAppManagerOptions(WindowsApplication)
+            {
+                DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true
+            }
+        };
 
         [SetUp]
         public override void StartApp()
@@ -76,33 +113,6 @@ namespace UnoAppTests
     public class HomePageTests : BaseTestClass
     {
         public HomePageTests(AppManagerOptions options) : base(options) { }
-
-        static IEnumerable<AppManagerOptions> TestPlatformOptions => new List<AppManagerOptions>
-        {
-            new AndroidAppManagerOptions
-            {
-                AppId = AndroidApplication,
-                AppActivity = AndroidApplicationActivity,
-                DriverUri = "http://localhost:4723/wd/hub",
-                LaunchAppiumServer = true
-            },
-            new WebAppManagerOptions(
-                WebAppDriverType.EdgeChromium,
-                Path.Combine(Environment.CurrentDirectory))
-            {
-                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
-            },
-            new WebAppManagerOptions(
-                WebAppDriverType.Chrome,
-                Path.Combine(Environment.CurrentDirectory))
-            {
-                Url = WasmApplication, ImplicitWait = TimeSpan.FromSeconds(5)
-            },
-            new WindowsAppManagerOptions(WindowsApplication)
-            {
-                DriverUri = "http://127.0.0.1:4723", LaunchWinAppDriver = true
-            }
-        };
 
         [Test]
         public void ShouldLoadHomePageContent()
