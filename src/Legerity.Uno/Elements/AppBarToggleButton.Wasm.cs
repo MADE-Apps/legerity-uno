@@ -1,6 +1,6 @@
 namespace Legerity.Uno.Elements
 {
-    using Extensions;
+    using Legerity.Uno.Extensions;
 
     public partial class AppBarToggleButton
     {

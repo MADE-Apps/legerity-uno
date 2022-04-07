@@ -1,27 +1,31 @@
 namespace Legerity.Uno.Elements
 {
-    using System;
+    using System.Linq;
+    using Legerity.Extensions;
+    using Legerity.IOS;
+    using Legerity.IOS.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
     public partial class ComboBox
     {
+        private static By ComboBoxItemLocatorIOS()
+        {
+            return ByExtras.IOSXamlAutomationId("ScrollContentPresenter");
+        }
+
         private RemoteWebElement DetermineListElementIOS(string name)
         {
-            throw new NotImplementedException(
-                "An implementation for iOS has not been implemented yet.");
+            return this.Driver.FindElement(this.ComboBoxItemLocator())
+                .FindWebElement(IOSByExtras.Label(name));
         }
 
         private string DetermineSelectedItemIOS()
         {
-            throw new NotImplementedException(
-                "An implementation for iOS has not been implemented yet.");
-        }
-
-        private By ComboBoxItemLocatorIOS()
-        {
-            throw new PlatformNotSupportedException(
-                "An implementation for iOS has not been implemented yet.");
+            return this.FindElement(ByExtras.IOSXamlAutomationId("ContentPresenter"))
+                ?.GetAllChildElements()
+                ?.LastOrDefault()
+                ?.GetLabel();
         }
     }
 }

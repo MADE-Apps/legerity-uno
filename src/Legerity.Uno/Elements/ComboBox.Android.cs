@@ -1,6 +1,7 @@
 namespace Legerity.Uno.Elements
 {
     using System.Linq;
+    using Legerity.Android;
     using Legerity.Android.Extensions;
     using Legerity.Extensions;
     using OpenQA.Selenium;
@@ -16,7 +17,7 @@ namespace Legerity.Uno.Elements
         private RemoteWebElement DetermineListElementAndroid(string name)
         {
             return this.Driver.FindElement(this.ComboBoxItemLocator())
-                .FindWebElement(ByExtras.AndroidPartialContentDescription(name));
+                .FindWebElement(AndroidByExtras.PartialContentDescription(name));
         }
 
         private string DetermineSelectedItemAndroid()

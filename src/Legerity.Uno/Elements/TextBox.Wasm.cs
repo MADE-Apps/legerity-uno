@@ -1,6 +1,6 @@
 namespace Legerity.Uno.Elements
 {
-    using Extensions;
+    using Legerity.Uno.Extensions;
     using OpenQA.Selenium.Remote;
 
     public partial class TextBox
