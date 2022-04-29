@@ -116,7 +116,7 @@
     </PackageReference>
     <PackageReference Include="Uno.UI.RemoteControl" Version="4.1.9" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.35" />
-    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.4.1" />
+    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.4.1.1" />
     <PackageReference Include="Xamarin.AndroidX.AppCompat.AppCompatResources">
       <Version>1.4.1</Version>
     </PackageReference>
