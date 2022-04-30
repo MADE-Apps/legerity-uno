@@ -4,6 +4,8 @@
 namespace Legerity.Uno.Extensions
 {
     using System;
+    using System.Globalization;
+    using Legerity.Extensions;
     using Legerity.Windows;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Android;
@@ -111,6 +113,27 @@ namespace Legerity.Uno.Extensions
 
             return string.Equals(compare, name, StringComparison.CurrentCultureIgnoreCase) ||
                    string.Equals(compare, automationId, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Verifies the elements name or Automation ID based on the given partial compare value.
+        /// </summary>
+        /// <param name="element">
+        /// The element to verify.
+        /// </param>
+        /// <param name="compare">
+        /// The partial value to verify is the name or Automation ID.
+        /// </param>
+        /// <returns>
+        /// True if the element's name or Automation ID matches partially; otherwise, false.
+        /// </returns>
+        public static bool VerifyNameOrAutomationIdContains(this RemoteWebElement element, string compare)
+        {
+            string name = element.GetXamlName();
+            string automationId = element.GetAutomationId();
+
+            return name.Contains(compare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase) ||
+                   automationId.Contains(compare, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase);
         }
     }
 }

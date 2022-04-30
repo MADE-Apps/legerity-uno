@@ -22,7 +22,7 @@ namespace Legerity.Uno.Elements
 
         private static By SecondaryOverflowPopupLocatorIOS()
         {
-            return ByExtras.IOSXamlAutomationId("OverflowContentRoot");
+            return ByExtras.IOSXamlAutomationId(OverflowContentRootName);
         }
     }
 }

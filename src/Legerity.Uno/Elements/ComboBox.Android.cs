@@ -11,7 +11,7 @@ namespace Legerity.Uno.Elements
     {
         private static By ComboBoxItemLocatorAndroid()
         {
-            return ByExtras.AndroidXamlAutomationId("ScrollContentPresenter");
+            return ByExtras.AndroidXamlAutomationId(ScrollContentPresenterName);
         }
 
         private RemoteWebElement DetermineListElementAndroid(string name)
@@ -22,7 +22,7 @@ namespace Legerity.Uno.Elements
 
         private string DetermineSelectedItemAndroid()
         {
-            return this.FindElement(ByExtras.AndroidXamlAutomationId("ContentPresenter"))
+            return this.FindElement(ByExtras.AndroidXamlAutomationId(ContentPresenterName))
                 ?.GetAllChildElements()
                 ?.LastOrDefault()
                 ?.GetContentDescription();

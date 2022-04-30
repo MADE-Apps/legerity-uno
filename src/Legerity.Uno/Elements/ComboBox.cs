@@ -12,6 +12,10 @@ namespace Legerity.Uno.Elements
     /// </summary>
     public partial class ComboBox : UnoElementWrapper
     {
+        private const string ScrollContentPresenterName = "ScrollContentPresenter";
+
+        private const string ContentPresenterName = "ContentPresenter";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
         /// </summary>
@@ -37,7 +41,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the currently selected item.
         /// </summary>
-        public string SelectedItem => this.DetermineSelectedItem();
+        public virtual string SelectedItem => this.DetermineSelectedItem();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="ComboBox"/> without direct casting.
@@ -59,9 +63,9 @@ namespace Legerity.Uno.Elements
         /// <param name="name">
         /// The name of the item to select.
         /// </param>
-        public void SelectItem(string name)
+        public virtual void SelectItem(string name)
         {
-            this.Element.Click();
+            this.Click();
 
             this.VerifyElementsShown(this.ComboBoxItemLocator(), TimeSpan.FromSeconds(2));
 

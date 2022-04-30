@@ -6,8 +6,7 @@ namespace Legerity.Uno.Elements
     {
         private bool DetermineIsOnWasm()
         {
-            return this.Element
-                .FindElementByXamlName("OverflowCheckGlyph")
+            return this.FindElementByXamlName("OverflowCheckGlyph")
                 .GetAttribute("style")
                 .Contains("opacity") == false;
         }

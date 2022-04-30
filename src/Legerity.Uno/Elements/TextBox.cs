@@ -36,14 +36,17 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the text value of the text box.
         /// </summary>
-        public string Text => this.DetermineText();
+        public virtual string Text => this.DetermineText();
 
         /// <summary>
         /// Gets a value indicating whether the text box is in a readonly state.
         /// </summary>
-        public bool IsReadonly => this.DetermineIsReadonly();
+        public virtual bool IsReadonly => this.DetermineIsReadonly();
 
-        private RemoteWebElement InputElement => this.DetermineInputElement();
+        /// <summary>
+        /// Gets the element associated with the text box input.
+        /// </summary>
+        public virtual RemoteWebElement InputElement => this.DetermineInputElement();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextBox"/> without direct casting.
@@ -63,7 +66,7 @@ namespace Legerity.Uno.Elements
         /// Sets the text of the text box to the specified text.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        public void SetText(string text)
+        public virtual void SetText(string text)
         {
             this.ClearText();
             this.AppendText(text);
@@ -73,7 +76,7 @@ namespace Legerity.Uno.Elements
         /// Appends the specified text to the text box.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        public void AppendText(string text)
+        public virtual void AppendText(string text)
         {
             this.InputElement.Click();
             this.InputElement.SendKeys(text);
@@ -82,7 +85,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Clears the text from the text box.
         /// </summary>
-        public void ClearText()
+        public virtual void ClearText()
         {
             this.InputElement.Click();
             this.InputElement.Clear();

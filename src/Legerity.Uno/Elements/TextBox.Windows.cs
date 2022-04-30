@@ -1,6 +1,7 @@
 namespace Legerity.Uno.Elements
 {
     using System;
+    using Legerity.Windows.Extensions;
     using OpenQA.Selenium.Remote;
 
     public partial class TextBox
@@ -12,7 +13,7 @@ namespace Legerity.Uno.Elements
 
         private string DetermineTextWindows()
         {
-            return this.InputElement.GetAttribute("Value.Value") ?? string.Empty;
+            return this.InputElement.GetValue() ?? string.Empty;
         }
 
         private bool DetermineIsReadonlyWindows()

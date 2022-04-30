@@ -40,9 +40,9 @@ namespace Legerity.Uno.Elements
 
         private (string day, string month, string year) DetermineSelectedDateWasm()
         {
-            string day = this.Element.FindElementByXamlName("DayTextBlock").Text;
-            string month = this.Element.FindElementByXamlName("MonthTextBlock").Text;
-            string year = this.Element.FindElementByXamlName("YearTextBlock").Text;
+            string day = this.FindElementByXamlName("DayTextBlock").Text;
+            string month = this.FindElementByXamlName("MonthTextBlock").Text;
+            string year = this.FindElementByXamlName("YearTextBlock").Text;
             return (day, month, year);
         }
     }

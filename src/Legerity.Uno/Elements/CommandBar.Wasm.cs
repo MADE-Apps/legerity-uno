@@ -12,7 +12,7 @@ namespace Legerity.Uno.Elements
 
         private static By SecondaryOverflowPopupLocatorWasm()
         {
-            return ByExtras.WebXamlName("OverflowContentRoot");
+            return ByExtras.WebXamlName(OverflowContentRootName);
         }
 
         private static By SecondaryOverflowButtonLocatorWasm()

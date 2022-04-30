@@ -42,7 +42,7 @@ namespace Legerity.Uno.Elements
 
         /// <summary>Gets the original <see cref="RemoteWebElement"/> reference object.</summary>
         public RemoteWebElement Element =>
-            this.elementReference is {IsAlive: true}
+            this.elementReference is { IsAlive: true }
                 ? this.elementReference.Target as RemoteWebElement
                 : null;
 
@@ -54,12 +54,12 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets a value indicating whether the element is enabled.
         /// </summary>
-        public bool IsEnabled => this.Element.Enabled;
+        public virtual bool IsEnabled => this.Element.Enabled;
 
         /// <summary>
         /// Gets a value indicating whether the element is visible.
         /// </summary>
-        public bool IsVisible => this.Element.Displayed;
+        public virtual bool IsVisible => this.Element.Displayed;
 
         /// <summary>
         /// Finds a child element by the specified locator.
@@ -79,6 +79,22 @@ namespace Legerity.Uno.Elements
         public ReadOnlyCollection<RemoteWebElement> FindElements(By locator)
         {
             return this.Element.FindWebElements(locator);
+        }
+
+        /// <summary>Clicks the element.</summary>
+        public virtual void Click()
+        {
+            this.Element.Click();
+        }
+
+        /// <summary>
+        /// Gets the value of the specified attribute for this element.
+        /// </summary>
+        /// <param name="attributeName">The name of the attribute.</param>
+        /// <returns>The attribute's current value if it exists; otherwise, null.</returns>
+        public virtual string GetAttribute(string attributeName)
+        {
+            return this.Element.GetAttribute(attributeName);
         }
 
         /// <summary>Determines whether the given element is shown.</summary>
