@@ -42,7 +42,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the time value of the time picker.
         /// </summary>
-        public TimeSpan? SelectedTime => this.DetermineSelectedTime();
+        public virtual TimeSpan? SelectedTime => this.DetermineSelectedTime();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TimePicker"/> without direct casting.
@@ -62,10 +62,10 @@ namespace Legerity.Uno.Elements
         /// Sets the time to the specified time.
         /// </summary>
         /// <param name="time">The time to set.</param>
-        public void SetTime(TimeSpan time)
+        public virtual void SetTime(TimeSpan time)
         {
             // Taps the picker to show the popup.
-            this.Element.Click();
+            this.Click();
 
             // Finds the popup and change values.
             RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());

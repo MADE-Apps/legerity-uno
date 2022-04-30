@@ -11,7 +11,7 @@ namespace Legerity.Uno.Elements
     {
         private static By ComboBoxItemLocatorIOS()
         {
-            return ByExtras.IOSXamlAutomationId("ScrollContentPresenter");
+            return ByExtras.IOSXamlAutomationId(ScrollContentPresenterName);
         }
 
         private RemoteWebElement DetermineListElementIOS(string name)
@@ -22,7 +22,7 @@ namespace Legerity.Uno.Elements
 
         private string DetermineSelectedItemIOS()
         {
-            return this.FindElement(ByExtras.IOSXamlAutomationId("ContentPresenter"))
+            return this.FindElement(ByExtras.IOSXamlAutomationId(ContentPresenterName))
                 ?.GetAllChildElements()
                 ?.LastOrDefault()
                 ?.GetLabel();

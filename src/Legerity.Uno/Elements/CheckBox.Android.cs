@@ -9,7 +9,7 @@ namespace Legerity.Uno.Elements
         {
             try
             {
-                return this.Element.FindElement(ByExtras.AndroidXamlAutomationId("CheckGlyph")) != null;
+                return this.FindElement(ByExtras.AndroidXamlAutomationId(CheckBoxGlyphName)) != null;
             }
             catch (WebDriverException)
             {

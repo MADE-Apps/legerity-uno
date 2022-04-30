@@ -33,7 +33,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the text value of the text block.
         /// </summary>
-        public string Text => this.Element.Text;
+        public virtual string Text => this.Element.Text;
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="TextBlock"/> without direct casting.

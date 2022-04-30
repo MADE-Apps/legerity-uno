@@ -18,6 +18,8 @@ namespace Legerity.Uno.Elements
     {
         private const string MoreButtonName = "MoreButton";
 
+        private const string OverflowContentRootName = "OverflowContentRoot";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBar"/> class.
         /// </summary>
@@ -43,7 +45,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the collection of primary buttons.
         /// </summary>
-        public IEnumerable<AppBarButton> PrimaryButtons =>
+        public virtual IEnumerable<AppBarButton> PrimaryButtons =>
             this.FindElements(this.PrimaryAppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
 
@@ -53,7 +55,7 @@ namespace Legerity.Uno.Elements
         /// Note, this property will only return a result when the secondary buttons are shown in the flyout.
         /// </para>
         /// </summary>
-        public IEnumerable<AppBarButton> SecondaryButtons =>
+        public virtual IEnumerable<AppBarButton> SecondaryButtons =>
             this.Driver.FindWebElement(this.SecondaryOverflowPopupLocator())
                 .FindWebElements(this.SecondaryAppBarButtonItemLocator())
                 .Select<RemoteWebElement, AppBarButton>(element => element);
@@ -61,7 +63,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets the secondary (more) options button.
         /// </summary>
-        public AppBarButton MoreButton => this.Driver.FindWebElement(this.SecondaryOverflowButtonLocator());
+        public virtual AppBarButton MoreButton => this.Driver.FindWebElement(this.SecondaryOverflowButtonLocator());
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CommandBar"/> without direct casting.
@@ -83,10 +85,24 @@ namespace Legerity.Uno.Elements
         /// <param name="name">
         /// The name of the button to click.
         /// </param>
-        public void ClickPrimaryButton(string name)
+        public virtual void ClickPrimaryButton(string name)
         {
             AppBarButton item = this.PrimaryButtons.FirstOrDefault(
                 element => element.Element.VerifyNameOrAutomationIdEquals(name));
+
+            item.Click();
+        }
+
+        /// <summary>
+        /// Clicks a primary button in the command bar with the specified partial button name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the button to click.
+        /// </param>
+        public virtual void ClickPrimaryButtonByPartialName(string name)
+        {
+            AppBarButton item = this.PrimaryButtons.FirstOrDefault(
+                element => element.Element.VerifyNameOrAutomationIdContains(name));
 
             item.Click();
         }
@@ -97,18 +113,40 @@ namespace Legerity.Uno.Elements
         /// <param name="name">
         /// The name of the button to click.
         /// </param>
-        public void ClickSecondaryButton(string name)
+        public virtual void ClickSecondaryButton(string name)
         {
-            this.VerifyElementShown(this.SecondaryOverflowButtonLocator(), TimeSpan.FromSeconds(2));
-
-            this.MoreButton.Click();
-
-            this.VerifyDriverElementShown(this.SecondaryOverflowPopupLocator(), TimeSpan.FromSeconds(2));
+            this.OpenSecondaryButtonMenu();
 
             AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
                 button => button.Element.VerifyNameOrAutomationIdEquals(name));
 
             secondaryButton.Click();
+        }
+
+        /// <summary>
+        /// Clicks a secondary button in the command bar with the specified partial button name.
+        /// </summary>
+        /// <param name="name">
+        /// The partial name of the button to click.
+        /// </param>
+        public virtual void ClickSecondaryButtonByPartialName(string name)
+        {
+            this.OpenSecondaryButtonMenu();
+
+            AppBarButton secondaryButton = this.SecondaryButtons.FirstOrDefault(
+                button => button.Element.VerifyNameOrAutomationIdContains(name));
+
+            secondaryButton.Click();
+        }
+
+        /// <summary>
+        /// Opens the menu associated with the secondary button options.
+        /// </summary>
+        public virtual void OpenSecondaryButtonMenu()
+        {
+            this.VerifyElementShown(this.SecondaryOverflowButtonLocator(), TimeSpan.FromSeconds(2));
+            this.MoreButton.Click();
+            this.VerifyDriverElementShown(this.SecondaryOverflowPopupLocator(), TimeSpan.FromSeconds(2));
         }
 
         private By PrimaryAppBarButtonItemLocator()

@@ -7,7 +7,7 @@ namespace Legerity.Uno.Elements
     {
         private bool DetermineIsCheckedWasm()
         {
-            return this.Element.FindElementByXamlName("CheckGlyph").Displayed;
+            return this.FindElementByXamlName(CheckBoxGlyphName).Displayed;
         }
 
         private bool DetermineIsIndeterminateWasm()

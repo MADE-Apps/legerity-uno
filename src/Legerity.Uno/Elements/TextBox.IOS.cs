@@ -9,7 +9,7 @@ namespace Legerity.Uno.Elements
     {
         private RemoteWebElement DetermineInputElementIOS()
         {
-            return this.Element.FindWebElement(By.ClassName("XCUIElementTypeTextField"));
+            return this.FindWebElement(By.ClassName("XCUIElementTypeTextField"));
         }
 
         private string DetermineTextIOS()

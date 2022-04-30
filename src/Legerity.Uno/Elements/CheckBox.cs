@@ -11,9 +11,7 @@ namespace Legerity.Uno.Elements
     /// </summary>
     public partial class CheckBox : UnoElementWrapper
     {
-        private const string CheckedValue = "1";
-
-        private const string IndeterminateValue = "2";
+        private const string CheckBoxGlyphName = "CheckGlyph";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckBox"/> class.
@@ -40,12 +38,12 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets a value indicating whether the check box is in the checked state.
         /// </summary>
-        public bool IsChecked => this.DetermineIsChecked();
+        public virtual bool IsChecked => this.DetermineIsChecked();
 
         /// <summary>
         /// Gets a value indicating whether the check box is in the indeterminate state.
         /// </summary>
-        public bool IsIndeterminate => this.DetermineIsIndeterminate();
+        public virtual bool IsIndeterminate => this.DetermineIsIndeterminate();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="CheckBox"/> without direct casting.
@@ -64,27 +62,27 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Checks the check box on.
         /// </summary>
-        public void CheckOn()
+        public virtual void CheckOn()
         {
             if (this.IsChecked)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         /// <summary>
         /// Checks the check box off.
         /// </summary>
-        public void CheckOff()
+        public virtual void CheckOff()
         {
             if (!this.IsChecked)
             {
                 return;
             }
 
-            this.Element.Click();
+            this.Click();
         }
 
         private bool DetermineIsChecked()

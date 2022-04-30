@@ -13,8 +13,6 @@ namespace Legerity.Uno.Elements
     /// </summary>
     public partial class AppBarToggleButton : AppBarButton
     {
-        private const string ToggleOnValue = "1";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppBarToggleButton"/> class.
         /// </summary>
@@ -29,7 +27,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Gets a value indicating whether the toggle button is in the on position.
         /// </summary>
-        public bool IsOn => this.DetermineIsOn();
+        public virtual bool IsOn => this.DetermineIsOn();
 
         /// <summary>
         /// Allows conversion of a <see cref="RemoteWebElement"/> to the <see cref="AppBarToggleButton"/> without direct casting.
@@ -48,7 +46,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Toggles the button on.
         /// </summary>
-        public void ToggleOn()
+        public virtual void ToggleOn()
         {
             if (this.IsOn)
             {
@@ -61,7 +59,7 @@ namespace Legerity.Uno.Elements
         /// <summary>
         /// Toggles the button off.
         /// </summary>
-        public void ToggleOff()
+        public virtual void ToggleOff()
         {
             if (!this.IsOn)
             {

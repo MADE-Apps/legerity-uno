@@ -8,7 +8,7 @@ namespace Legerity.Uno.Elements
     {
         private RemoteWebElement DetermineInputElementAndroid()
         {
-            return this.Element.FindWebElement(By.ClassName("android.widget.EditText"));
+            return this.FindWebElement(By.ClassName("android.widget.EditText"));
         }
 
         private string DetermineTextAndroid()

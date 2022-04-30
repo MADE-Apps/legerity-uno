@@ -64,10 +64,10 @@ namespace Legerity.Uno.Elements
         /// Sets the date to the specified date.
         /// </summary>
         /// <param name="date">The date to set.</param>
-        public void SetDate(DateTime date)
+        public virtual void SetDate(DateTime date)
         {
             // Taps the picker to show the popup.
-            this.Element.Click();
+            this.Click();
 
             // Finds the popup and change values.
             RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());

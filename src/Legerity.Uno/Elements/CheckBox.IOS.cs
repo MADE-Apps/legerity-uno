@@ -9,7 +9,7 @@ namespace Legerity.Uno.Elements
         {
             try
             {
-                return this.Element.FindElement(ByExtras.IOSXamlAutomationId("CheckGlyph")) != null;
+                return this.FindElement(ByExtras.IOSXamlAutomationId(CheckBoxGlyphName)) != null;
             }
             catch (WebDriverException)
             {

@@ -33,8 +33,8 @@ namespace Legerity.Uno.Elements
 
         private (string hour, string minute) DetermineSelectedTimeWasm()
         {
-            string hour = this.Element.FindElementByXamlName("HourTextBlock").Text;
-            string minute = this.Element.FindElementByXamlName("MinuteTextBlock").Text;
+            string hour = this.FindElementByXamlName("HourTextBlock").Text;
+            string minute = this.FindElementByXamlName("MinuteTextBlock").Text;
 
             return (hour, minute);
         }

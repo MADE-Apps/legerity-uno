@@ -3,7 +3,6 @@ namespace Legerity.Uno.Elements
     using System;
     using System.Linq;
     using Legerity.Extensions;
-    using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
 
