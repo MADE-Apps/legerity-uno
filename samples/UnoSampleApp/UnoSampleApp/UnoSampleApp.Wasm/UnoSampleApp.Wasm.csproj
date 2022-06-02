@@ -54,7 +54,7 @@
     <PackageReference Include="MADE.UI.Controls.ChipBox" Version="1.5.0" />
     <PackageReference Include="MADE.UI.Controls.DropDownList" Version="1.5.0" />
     <PackageReference Include="MADE.UI.Controls.FilePicker" Version="1.5.0" />
-    <PackageReference Include="MADE.UI.Controls.RichEditToolbar" Version="1.5.0" />
+    <PackageReference Include="MADE.UI.Controls.RichEditToolbar" Version="1.6.0" />
     <PackageReference Include="MADE.UI.Controls.Validator" Version="1.5.0" />
     <PackageReference Include="MADE.UI.Data.Converters" Version="1.5.0" />
     <PackageReference Include="MADE.UI.Styling" Version="1.5.0" />
