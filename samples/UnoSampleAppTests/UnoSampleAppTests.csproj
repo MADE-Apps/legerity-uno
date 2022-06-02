@@ -12,7 +12,7 @@
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="101.0.4951.4100" />
-    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="100.0.1185.50" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="101.0.1210.47" />
     <PackageReference Include="Shouldly" Version="4.0.3" />
   </ItemGroup>
 
