@@ -16,6 +16,7 @@ As many developers know, projects like Legerity for Uno Platform are built and m
 | ------ | ------ | ------ |
 | Packages | [![CI](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml) | [![Nuget](https://img.shields.io/nuget/v/Legerity.Uno.svg)](https://www.nuget.org/packages/Legerity.Uno/) |
 | Docs | [![Docs](https://github.com/MADE-Apps/legerity-uno/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-uno/actions/workflows/docs.yml) | N/A |
+| [Page Object Generator](tools/Legerity.Uno.PageObjectGenerator) | [![CI](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml) | [![Nuget](https://img.shields.io/nuget/v/Legerity.Uno.PageObjectGenerator.svg)](https://www.nuget.org/packages/Legerity.Uno.PageObjectGenerator/) |
 
 ## Installation 💾
 
