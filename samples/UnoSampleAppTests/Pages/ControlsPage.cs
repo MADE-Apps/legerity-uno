@@ -10,6 +10,7 @@ namespace UnoSampleAppTests.Pages
     using Legerity.Uno.Extensions;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Appium.Windows;
+    using OpenQA.Selenium.Remote;
     using Shouldly;
     using ByExtensions = Legerity.Windows.Extensions.ByExtensions;
 
@@ -17,6 +18,9 @@ namespace UnoSampleAppTests.Pages
     {
         private const string SampleControlPrefix = "Sample";
 
+        /// <summary>
+        /// Gets a given trait of the page to verify that the page is in view.
+        /// </summary>
         protected override By Trait => this.DetermineTrait();
 
         public Button Button => this.App.FindElementByAutomationId($"{SampleControlPrefix}{nameof(this.Button)}");
@@ -115,8 +119,7 @@ namespace UnoSampleAppTests.Pages
 
         public ControlsPage VerifyDate(DateTime expectedDate)
         {
-            Thread.Sleep(
-                500); // Uno Wasm applications run too fast to ensure the selected date is set correctly before executing.
+            Thread.Sleep(500); // Uno Wasm applications run too fast to ensure the selected date is set correctly before executing.
             this.DatePicker.SelectedDate.ShouldBe(expectedDate);
             return this;
         }
