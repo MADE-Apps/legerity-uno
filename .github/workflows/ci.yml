@@ -11,6 +11,7 @@ on:
     - samples/**
     - tests/**
     - build/**
+    - tools/**
     - .github/workflows/ci.yml
     - global.json
   pull_request:
@@ -21,6 +22,7 @@ on:
     - samples/**
     - tests/**
     - build/**
+    - tools/**
     - .github/workflows/ci.yml
     - global.json
   workflow_dispatch:
@@ -29,8 +31,8 @@ jobs:
   build:
 
     env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'Legerity.Uno.NoSamples.slnf'
+      BUILD_CONFIG: 'ReleasePackages'
+      SOLUTION: 'Legerity.Uno.sln'
 
     runs-on: ubuntu-latest
 
