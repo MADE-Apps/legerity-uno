@@ -9,11 +9,14 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>legerity-uno-pop</ToolCommandName>
     <Product>Legerity Page Object Generator for Uno Platform</Product>
+    <Description>A command line tool for auto generating page objects from Uno Platform XAML pages for UI tests using the Legerity.Uno framework</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RootNamespace>Legerity.Uno</RootNamespace>
     <PackageTags>PageObject Appium Selenium WindowsDriver WinAppDriver Windows WinUI Uno Platform Android iOS WebAssembly</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath=""/>
     <None Remove="Templates\UnoPageObject.template" />
   </ItemGroup>
 
