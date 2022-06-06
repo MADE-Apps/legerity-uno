@@ -8,10 +8,10 @@ using Serilog;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         SerilogConfigurator.ConfigureLogging();
-        Parser.Default.ParseArguments<Options>(args)
+        await Parser.Default.ParseArguments<Options>(args)
             .WithNotParsed(errors =>
             {
                 foreach (Error? error in errors)
@@ -30,8 +30,11 @@ public class Program
                 {
                     Directory.CreateDirectory(options.OutputPath);
                 }
-                
-                await new XamlPageObjectGenerator().GenerateAsync(options.Namespace, options.InputPath, options.OutputPath);
+
+                await new XamlPageObjectGenerator().GenerateAsync(
+                    options.Namespace,
+                    options.InputPath,
+                    options.OutputPath);
 
                 Log.Information("Finished generating Legerity for Uno Platform page objects!");
             });

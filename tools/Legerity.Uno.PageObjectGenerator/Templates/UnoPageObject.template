@@ -9,7 +9,6 @@ using Legerity.Uno.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
-using Shouldly;
 using ByExtensions = Legerity.Windows.Extensions.ByExtensions;
 
 namespace {{namespace}}
