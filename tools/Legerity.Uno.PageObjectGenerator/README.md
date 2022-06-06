@@ -3,7 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/MADE-Apps/legerity-uno.svg)](https://github.com/MADE-Apps/legerity-uno/releases)
 [![Build status](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-uno/actions/workflows/ci.yml)
 [![Twitter Followers](https://img.shields.io/twitter/follow/jamesmcroft?label=follow%20%40jamesmcroft&style=flat)](https://twitter.com/jamesmcroft)
-[![.NET Tool](https://img.shields.io/nuget/v/Legerity.Uno.PageObjectGenerator)](https://www.nuget.org/packages/Legerity.Uno.PageObjectGenerator/)
+[![.NET Tool](https://img.shields.io/nuget/v/Legerity.Uno.PageObjectGenerator.svg)](https://www.nuget.org/packages/Legerity.Uno.PageObjectGenerator/)
 
 Want to generate your Legerity page objects super fast? 🚀
 
