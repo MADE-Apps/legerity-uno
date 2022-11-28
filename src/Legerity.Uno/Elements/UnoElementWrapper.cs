@@ -61,6 +61,9 @@ namespace Legerity.Uno.Elements
         /// </summary>
         public virtual bool IsVisible => this.Element.Displayed;
 
+        /// <summary>Gets the driver used to find this element.</summary>
+        public IWebDriver ElementDriver => this.Element.WrappedDriver;
+
         /// <summary>
         /// Finds a child element by the specified locator.
         /// </summary>
