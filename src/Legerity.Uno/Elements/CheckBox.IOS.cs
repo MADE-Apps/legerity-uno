@@ -3,7 +3,7 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
+using Exceptions;
 using OpenQA.Selenium;
 
 public partial class CheckBox
@@ -20,9 +20,10 @@ public partial class CheckBox
         }
     }
 
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private bool DetermineIsIndeterminateIOS()
     {
-        throw new NotImplementedException(
+        throw new IOSNotImplementedException(
             "An implementation for iOS has not been implemented yet.");
     }
 }

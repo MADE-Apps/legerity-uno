@@ -4,6 +4,7 @@
 namespace Legerity.Uno.Elements;
 
 using System;
+using Exceptions;
 using Legerity.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
@@ -45,6 +46,10 @@ public partial class TimePicker : UnoElementWrapper
     /// <summary>
     /// Gets the time value of the time picker.
     /// </summary>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     public virtual TimeSpan? SelectedTime => this.DetermineSelectedTime();
 
     /// <summary>
@@ -65,6 +70,12 @@ public partial class TimePicker : UnoElementWrapper
     /// Sets the time to the specified time.
     /// </summary>
     /// <param name="time">The time to set.</param>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     public virtual void SetTime(TimeSpan time)
     {
         // Taps the picker to show the popup.
@@ -72,17 +83,20 @@ public partial class TimePicker : UnoElementWrapper
 
         // Finds the popup and change values.
         RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());
-        this.FindSelectorChildElementByValue(popup.FindWebElement(this.HourSelectorLocator()), time.ToString("%h")).Click();
-        this.FindSelectorChildElementByValue(popup.FindWebElement(this.MinuteSelectorLocator()), time.ToString("mm")).Click();
+        this.FindSelectorChildElementByValue(popup.FindWebElement(this.HourSelectorLocator()), time.ToString("%h"))
+            .Click();
+        this.FindSelectorChildElementByValue(popup.FindWebElement(this.MinuteSelectorLocator()), time.ToString("mm"))
+            .Click();
         popup.FindWebElement(this.AcceptButtonLocator()).Click();
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private TimeSpan? DetermineSelectedTime()
     {
-        string hour;
-        string minute;
-
-        (hour, minute) = this.Element switch
+        (string hour, string minute) = this.Element switch
         {
             AndroidElement _ => this.DetermineSelectedTimeAndroid(),
             IOSElement _ => this.DetermineSelectedTimeIOS(),
@@ -91,11 +105,13 @@ public partial class TimePicker : UnoElementWrapper
         };
 
         return string.IsNullOrWhiteSpace(hour) ||
-               string.IsNullOrWhiteSpace(minute) ?
-            default :
+               string.IsNullOrWhiteSpace(minute) ? default :
             TimeSpan.TryParse($"{hour}:{minute}", out TimeSpan time) ? time : default(TimeSpan?);
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private IWebElement FindSelectorChildElementByValue(RemoteWebElement element, string value)
     {
         return this.Element switch
@@ -107,6 +123,8 @@ public partial class TimePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By FlyoutLocator()
     {
         return this.Element switch
@@ -118,6 +136,8 @@ public partial class TimePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By HourSelectorLocator()
     {
         return this.Element switch
@@ -129,6 +149,8 @@ public partial class TimePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By MinuteSelectorLocator()
     {
         return this.Element switch
@@ -140,6 +162,8 @@ public partial class TimePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By AcceptButtonLocator()
     {
         return this.Element switch

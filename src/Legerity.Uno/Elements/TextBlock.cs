@@ -36,6 +36,7 @@ public class TextBlock : UnoElementWrapper
     /// <summary>
     /// Gets the text value of the text block.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual string Text => this.Element.Text;
 
     /// <summary>

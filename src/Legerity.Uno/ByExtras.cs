@@ -3,11 +3,8 @@
 
 namespace Legerity.Uno;
 
-using System;
 using Legerity.Android;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android.UiAutomator;
 
 /// <summary>
 /// Defines a collection of extra locator constraints for <see cref="By"/>.
@@ -62,28 +59,6 @@ public static class ByExtras
     public static By AndroidXamlAutomationId(string xuid)
     {
         return AndroidByExtras.ContentDescription(xuid);
-    }
-
-    /// <summary>
-    /// Gets a mechanism to find elements by an Android content description.
-    /// </summary>
-    /// <param name="contentDesc">The content description to match exactly on.</param>
-    /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
-    [Obsolete("AndroidContentDescription(string) will be removed in a future major release. Please use the AndroidByExtras.ContentDescription(string) instead.")]
-    public static By AndroidContentDescription(string contentDesc)
-    {
-        return new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals(contentDesc));
-    }
-
-    /// <summary>
-    /// Gets a mechanism to find elements by an Android partial content description.
-    /// </summary>
-    /// <param name="contentDesc">The partial content description to match on.</param>
-    /// <returns>A <see cref="By"/> object the driver can use to find elements.</returns>
-    [Obsolete("AndroidPartialContentDescription(string) will be removed in a future major release. Please use the AndroidByExtras.PartialContentDescription(string) instead.")]
-    public static By AndroidPartialContentDescription(string contentDesc)
-    {
-        return new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionContains(contentDesc));
     }
 
     /// <summary>

@@ -17,12 +17,22 @@ public partial class ComboBox
         return ByExtras.AndroidXamlAutomationId(ScrollContentPresenterName);
     }
 
-    private RemoteWebElement DetermineListElementAndroid(string name)
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    private RemoteWebElement DetermineListElementByNameAndroid(string name)
     {
         return this.Driver.FindElement(this.ComboBoxItemLocator())
             .FindWebElement(AndroidByExtras.PartialContentDescription(name));
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    private RemoteWebElement DetermineListElementByPartialNameAndroid(string name)
+    {
+        return this.Driver.FindElement(this.ComboBoxItemLocator())
+            .FindWebElement(AndroidByExtras.PartialContentDescription(name));
+    }
+
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string DetermineSelectedItemAndroid()
     {
         return this.FindElement(ByExtras.AndroidXamlAutomationId(ContentPresenterName))

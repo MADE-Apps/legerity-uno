@@ -13,7 +13,7 @@ using OpenQA.Selenium.Remote;
 /// <summary>
 /// Defines a collection of extensions for <see cref="RemoteWebDriver"/> objects.
 /// </summary>
-public static class RemoteWebDriverExtensions
+public static class DriverExtensions
 {
     /// <summary>
     /// Finds the first Uno Platform web element in the page that matches the given XAML type.
@@ -26,6 +26,7 @@ public static class RemoteWebDriverExtensions
     /// </para>
     /// </param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindWebElementByXamlType(this RemoteWebDriver driver, string xamlType)
     {
         return driver.FindElement(ByExtras.WebXamlType(xamlType)) as RemoteWebElement;
@@ -43,6 +44,7 @@ public static class RemoteWebDriverExtensions
     /// <param name="driver">The web application driver.</param>
     /// <param name="name">The x:Name of the element to find.</param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindElementByXamlName(this RemoteWebDriver driver, string name)
     {
         return driver switch
@@ -76,6 +78,7 @@ public static class RemoteWebDriverExtensions
     /// <param name="driver">The application driver.</param>
     /// <param name="automationId">The automation identifier.</param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindElementByAutomationId(this RemoteWebDriver driver, string automationId)
     {
         return driver switch

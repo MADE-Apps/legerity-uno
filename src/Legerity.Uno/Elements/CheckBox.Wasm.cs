@@ -3,19 +3,23 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
+using Exceptions;
 using Legerity.Uno.Extensions;
+using OpenQA.Selenium;
 
 public partial class CheckBox
 {
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private bool DetermineIsCheckedWasm()
     {
         return this.FindElementByXamlName(CheckBoxGlyphName).Displayed;
     }
 
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
     private bool DetermineIsIndeterminateWasm()
     {
-        throw new NotImplementedException(
+        throw new WebNotImplementedException(
             "An implementation for WASM has not been implemented yet.");
     }
 }

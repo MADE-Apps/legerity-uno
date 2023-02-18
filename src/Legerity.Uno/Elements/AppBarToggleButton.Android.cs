@@ -3,13 +3,14 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
+using Exceptions;
 
 public partial class AppBarToggleButton
 {
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private bool DetermineIsOnAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 }

@@ -3,13 +3,14 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
+using Exceptions;
 
 public partial class AppBarToggleButton
 {
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private bool DetermineIsOnIOS()
     {
-        throw new NotImplementedException(
+        throw new IOSNotImplementedException(
             "An implementation for iOS has not been implemented yet.");
     }
 }

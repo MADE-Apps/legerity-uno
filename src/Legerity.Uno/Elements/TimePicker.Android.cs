@@ -4,44 +4,51 @@
 namespace Legerity.Uno.Elements;
 
 using System;
+using Exceptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 
 public partial class TimePicker
 {
-    private static By FlyoutLocatorAndroid()
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    public static By FlyoutLocatorAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private static By HourSelectorLocatorAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private static By MinuteSelectorLocatorAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private static By AcceptButtonLocatorAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private static IWebElement FindSelectorChildElementByValueAndroid(IFindsByName element, string value)
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private (string hour, string minute) DetermineSelectedTimeAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 }

@@ -4,6 +4,7 @@
 namespace Legerity.Uno.Elements;
 
 using System;
+using Exceptions;
 using Legerity.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
@@ -47,6 +48,10 @@ public partial class DatePicker : UnoElementWrapper
     /// <summary>
     /// Gets the date value of the date picker.
     /// </summary>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     public DateTime? SelectedDate => this.DetermineSelectedDate();
 
     /// <summary>
@@ -67,6 +72,13 @@ public partial class DatePicker : UnoElementWrapper
     /// Sets the date to the specified date.
     /// </summary>
     /// <param name="date">The date to set.</param>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
     public virtual void SetDate(DateTime date)
     {
         // Taps the picker to show the popup.
@@ -74,19 +86,22 @@ public partial class DatePicker : UnoElementWrapper
 
         // Finds the popup and change values.
         RemoteWebElement popup = this.Driver.FindWebElement(this.FlyoutLocator());
-        this.FindSelectorChildElementByValue(popup.FindWebElement(this.DaySelectorLocator()), date.ToString("%d")).Click();
-        this.FindSelectorChildElementByValue(popup.FindWebElement(this.MonthSelectorLocator()), date.ToString("MMMM")).Click();
-        this.FindSelectorChildElementByValue(popup.FindWebElement(this.YearSelectorLocator()), date.ToString("yyyy")).Click();
+        this.FindSelectorChildElementByValue(popup.FindWebElement(this.DaySelectorLocator()), date.ToString("%d"))
+            .Click();
+        this.FindSelectorChildElementByValue(popup.FindWebElement(this.MonthSelectorLocator()), date.ToString("MMMM"))
+            .Click();
+        this.FindSelectorChildElementByValue(popup.FindWebElement(this.YearSelectorLocator()), date.ToString("yyyy"))
+            .Click();
         popup.FindWebElement(this.AcceptButtonLocator()).Click();
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private DateTime? DetermineSelectedDate()
     {
-        string day;
-        string month;
-        string year;
-
-        (day, month, year) = this.Element switch
+        (string day, string month, string year) = this.Element switch
         {
             AndroidElement _ => this.DetermineSelectedDateAndroid(),
             IOSElement _ => this.DetermineSelectedDateIOS(),
@@ -100,6 +115,10 @@ public partial class DatePicker : UnoElementWrapper
             DateTime.TryParse($"{day} {month} {year}", out DateTime date) ? date : default(DateTime?);
     }
 
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private IWebElement FindSelectorChildElementByValue(IFindsByName element, string value)
     {
         return this.Element switch
@@ -111,6 +130,8 @@ public partial class DatePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By FlyoutLocator()
     {
         return this.Element switch
@@ -122,6 +143,8 @@ public partial class DatePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By DaySelectorLocator()
     {
         return this.Element switch
@@ -133,6 +156,8 @@ public partial class DatePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By MonthSelectorLocator()
     {
         return this.Element switch
@@ -144,6 +169,8 @@ public partial class DatePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By YearSelectorLocator()
     {
         return this.Element switch
@@ -155,6 +182,8 @@ public partial class DatePicker : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private By AcceptButtonLocator()
     {
         return this.Element switch

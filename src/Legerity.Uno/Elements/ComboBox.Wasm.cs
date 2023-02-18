@@ -4,6 +4,7 @@
 namespace Legerity.Uno.Elements;
 
 using System;
+using System.Globalization;
 using System.Linq;
 using Legerity.Extensions;
 using OpenQA.Selenium;
@@ -16,7 +17,8 @@ public partial class ComboBox
         return ByExtras.WebXamlType("Windows.UI.Xaml.Controls.ComboBoxItem");
     }
 
-    private RemoteWebElement DetermineListElementWasm(string name)
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    private RemoteWebElement DetermineListElementByNameWasm(string name)
     {
         return this.Driver
             .FindWebElements(this.ComboBoxItemLocator())
@@ -24,6 +26,18 @@ public partial class ComboBox
             .FirstOrDefault(element => element.Text.Equals(name, StringComparison.CurrentCultureIgnoreCase));
     }
 
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    private RemoteWebElement DetermineListElementByPartialNameWasm(string name)
+    {
+        return this.Driver
+            .FindWebElements(this.ComboBoxItemLocator())
+            .SelectMany(element => element.FindWebElements(By.TagName("p")))
+            .FirstOrDefault(element =>
+                element.Text.Contains(name, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase));
+    }
+
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string DetermineSelectedItemWasm()
     {
         return this.FindElements(ByExtras.WebXamlType("Windows.UI.Xaml.Controls.ContentPresenter"))

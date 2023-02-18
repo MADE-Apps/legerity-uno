@@ -4,6 +4,7 @@
 namespace Legerity.Uno.Elements;
 
 using System;
+using Exceptions;
 using OpenQA.Selenium;
 
 public partial class CheckBox
@@ -20,9 +21,10 @@ public partial class CheckBox
         }
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
     private bool DetermineIsIndeterminateAndroid()
     {
-        throw new NotImplementedException(
+        throw new AndroidNotImplementedException(
             "An implementation for Android has not been implemented yet.");
     }
 }

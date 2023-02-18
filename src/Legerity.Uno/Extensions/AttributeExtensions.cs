@@ -20,6 +20,7 @@ public static class AttributeExtensions
     /// </summary>
     /// <param name="element">The element to retrieve a XAML name for.</param>
     /// <returns>The element's XAML name.</returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static string GetXamlName(this IWebElement element)
     {
         return element switch
@@ -36,6 +37,7 @@ public static class AttributeExtensions
     /// </summary>
     /// <param name="element">The element to retrieve an automation ID for.</param>
     /// <returns>The element's automation ID.</returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static string GetAutomationId(this IWebElement element)
     {
         return element switch

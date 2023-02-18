@@ -32,11 +32,14 @@ public partial class TimePicker
         return WindowsByExtras.AutomationId(AcceptButtonName);
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private static IWebElement FindSelectorChildElementByValueWindows(IFindsByName element, string value)
     {
         return element.FindElementByName(value);
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private (string hour, string minute) DetermineSelectedTimeWindows()
     {
         string timeElementText = this.FindWebElement(WindowsByExtras.AutomationId("FlyoutButton"))

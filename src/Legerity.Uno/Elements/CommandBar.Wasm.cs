@@ -3,7 +3,6 @@
 
 namespace Legerity.Uno.Elements;
 
-using Legerity.Uno.Extensions;
 using OpenQA.Selenium;
 
 public partial class CommandBar

@@ -3,6 +3,8 @@
 
 namespace Legerity.Uno.Elements;
 
+using Exceptions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Appium.Windows;
@@ -27,6 +29,10 @@ public partial class AppBarToggleButton : AppBarButton
     /// <summary>
     /// Gets a value indicating whether the toggle button is in the on position.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     public virtual bool IsOn => this.DetermineIsOn();
 
     /// <summary>
@@ -46,6 +52,9 @@ public partial class AppBarToggleButton : AppBarButton
     /// <summary>
     /// Toggles the button on.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOn()
     {
         if (this.IsOn)
@@ -59,6 +68,9 @@ public partial class AppBarToggleButton : AppBarButton
     /// <summary>
     /// Toggles the button off.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void ToggleOff()
     {
         if (!this.IsOn)
@@ -69,6 +81,10 @@ public partial class AppBarToggleButton : AppBarButton
         this.Click();
     }
 
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
     private bool DetermineIsOn()
     {
         return this.Element switch

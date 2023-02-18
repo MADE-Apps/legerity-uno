@@ -4,9 +4,12 @@
 namespace Legerity.Uno.Elements;
 
 using Legerity.Uno.Extensions;
+using OpenQA.Selenium;
 
 public partial class AppBarToggleButton
 {
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private bool DetermineIsOnWasm()
     {
         return this.FindElementByXamlName("OverflowCheckGlyph")

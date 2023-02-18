@@ -16,7 +16,7 @@ using OpenQA.Selenium.Remote;
 /// <summary>
 /// Defines a collection of extensions for <see cref="RemoteWebElement"/> objects.
 /// </summary>
-public static class RemoteWebElementExtensions
+public static class ElementExtensions
 {
     /// <summary>
     /// Finds the first Uno Platform web element under the given element that matches the given XAML type.
@@ -29,6 +29,7 @@ public static class RemoteWebElementExtensions
     /// </para>
     /// </param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindWebElementByXamlType(this RemoteWebElement element, string xamlType)
     {
         return element.FindElement(ByExtras.WebXamlType(xamlType)) as RemoteWebElement;
@@ -46,6 +47,7 @@ public static class RemoteWebElementExtensions
     /// <param name="element">The web element.</param>
     /// <param name="name">The x:Name of the element to find.</param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindElementByXamlName(this RemoteWebElement element, string name)
     {
         return element switch
@@ -79,6 +81,7 @@ public static class RemoteWebElementExtensions
     /// <param name="element">The element.</param>
     /// <param name="automationId">The automation identifier.</param>
     /// <returns>The <see cref="RemoteWebElement"/> if found.</returns>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public static RemoteWebElement FindElementByAutomationId(this RemoteWebElement element, string automationId)
     {
         return element switch
@@ -106,6 +109,7 @@ public static class RemoteWebElementExtensions
     /// <returns>
     /// True if the element's name or AutomationId matches; otherwise, false.
     /// </returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static bool VerifyNameOrAutomationIdEquals(this RemoteWebElement element, string compare)
     {
         string name = element.GetXamlName();
@@ -127,6 +131,7 @@ public static class RemoteWebElementExtensions
     /// <returns>
     /// True if the element's name or Automation ID matches partially; otherwise, false.
     /// </returns>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public static bool VerifyNameOrAutomationIdContains(this RemoteWebElement element, string compare)
     {
         string name = element.GetXamlName();

@@ -3,6 +3,7 @@
 
 namespace Legerity.Uno.Elements;
 
+using Exceptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
@@ -41,11 +42,17 @@ public partial class CheckBox : UnoElementWrapper
     /// <summary>
     /// Gets a value indicating whether the check box is in the checked state.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual bool IsChecked => this.DetermineIsChecked();
 
     /// <summary>
     /// Gets a value indicating whether the check box is in the indeterminate state.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
     public virtual bool IsIndeterminate => this.DetermineIsIndeterminate();
 
     /// <summary>
@@ -65,6 +72,9 @@ public partial class CheckBox : UnoElementWrapper
     /// <summary>
     /// Checks the check box on.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOn()
     {
         if (this.IsChecked)
@@ -78,6 +88,9 @@ public partial class CheckBox : UnoElementWrapper
     /// <summary>
     /// Checks the check box off.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when an element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when an element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual void CheckOff()
     {
         if (!this.IsChecked)
@@ -88,6 +101,8 @@ public partial class CheckBox : UnoElementWrapper
         this.Click();
     }
 
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private bool DetermineIsChecked()
     {
         return this.Element switch
@@ -99,6 +114,10 @@ public partial class CheckBox : UnoElementWrapper
         };
     }
 
+    /// <exception cref="AndroidNotImplementedException">Thrown when called on Android.</exception>
+    /// <exception cref="IOSNotImplementedException">Thrown when called on iOS.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
     private bool DetermineIsIndeterminate()
     {
         return this.Element switch

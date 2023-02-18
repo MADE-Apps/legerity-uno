@@ -3,8 +3,8 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
 using Legerity.Windows.Extensions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 public partial class TextBox
@@ -14,15 +14,17 @@ public partial class TextBox
         return this.Element;
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string DetermineTextWindows()
     {
         return this.InputElement.GetValue() ?? string.Empty;
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
     private bool DetermineIsReadonlyWindows()
     {
-        return this.InputElement
-            .GetAttribute("Value.IsReadonly")
-            .Equals("True", StringComparison.CurrentCultureIgnoreCase);
+        return this.InputElement.IsReadonly();
     }
 }

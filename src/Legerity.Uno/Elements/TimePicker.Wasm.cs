@@ -29,11 +29,14 @@ public partial class TimePicker
         return ByExtras.WebXamlName(AcceptButtonName);
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private static IWebElement FindSelectorChildElementByValueWasm(IWebElement element, string value)
     {
         return element.FindElementByText(value);
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
     private (string hour, string minute) DetermineSelectedTimeWasm()
     {
         string hour = this.FindElementByXamlName("HourTextBlock").Text;

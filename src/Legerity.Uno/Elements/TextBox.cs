@@ -39,16 +39,19 @@ public partial class TextBox : UnoElementWrapper
     /// <summary>
     /// Gets the text value of the text box.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual string Text => this.DetermineText();
 
     /// <summary>
     /// Gets a value indicating whether the text box is in a readonly state.
     /// </summary>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     public virtual bool IsReadonly => this.DetermineIsReadonly();
 
     /// <summary>
     /// Gets the element associated with the text box input.
     /// </summary>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual RemoteWebElement InputElement => this.DetermineInputElement();
 
     /// <summary>
@@ -69,6 +72,10 @@ public partial class TextBox : UnoElementWrapper
     /// Sets the text of the text box to the specified text.
     /// </summary>
     /// <param name="text">The text to display.</param>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
+    /// <exception cref="InvalidElementStateException">Thrown when the target element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when the target element is not visible.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void SetText(string text)
     {
         this.ClearText();
@@ -79,6 +86,10 @@ public partial class TextBox : UnoElementWrapper
     /// Appends the specified text to the text box.
     /// </summary>
     /// <param name="text">The text to append.</param>
+    /// <exception cref="InvalidElementStateException">Thrown when the target element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when the target element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void AppendText(string text)
     {
         this.InputElement.Click();
@@ -88,12 +99,17 @@ public partial class TextBox : UnoElementWrapper
     /// <summary>
     /// Clears the text from the text box.
     /// </summary>
+    /// <exception cref="InvalidElementStateException">Thrown when the target element is not enabled.</exception>
+    /// <exception cref="ElementNotVisibleException">Thrown when the target element is not visible.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when the target element is no longer valid in the document DOM.</exception>
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     public virtual void ClearText()
     {
         this.InputElement.Click();
         this.InputElement.Clear();
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
     private RemoteWebElement DetermineInputElement()
     {
         return this.Element switch
@@ -105,6 +121,7 @@ public partial class TextBox : UnoElementWrapper
         };
     }
 
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private string DetermineText()
     {
         return this.Element switch
@@ -116,6 +133,7 @@ public partial class TextBox : UnoElementWrapper
         };
     }
 
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private bool DetermineIsReadonly()
     {
         return this.Element switch

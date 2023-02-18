@@ -3,7 +3,7 @@
 
 namespace Legerity.Uno.Elements;
 
-using System;
+using Exceptions;
 using Legerity.Uno.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
@@ -35,12 +35,15 @@ public partial class DatePicker
         return ByExtras.WebXamlName(AcceptButtonName);
     }
 
+    /// <exception cref="WebNotImplementedException">Thrown when called on Web.</exception>
     private static IWebElement FindSelectorChildElementByValueWasm(IFindsByName element, string value)
     {
-        throw new NotImplementedException(
+        throw new WebNotImplementedException(
             "An implementation for WASM has not been implemented yet.");
     }
 
+    /// <exception cref="NoSuchElementException">Thrown when no element matches the expected locator.</exception>
+    /// <exception cref="StaleElementReferenceException">Thrown when an element is no longer valid in the document DOM.</exception>
     private (string day, string month, string year) DetermineSelectedDateWasm()
     {
         string day = this.FindElementByXamlName("DayTextBlock").Text;
