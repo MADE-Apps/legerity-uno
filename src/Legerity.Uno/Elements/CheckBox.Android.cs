@@ -1,26 +1,28 @@
-namespace Legerity.Uno.Elements
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace Legerity.Uno.Elements;
+
+using System;
+using OpenQA.Selenium;
+
+public partial class CheckBox
 {
-    using System;
-    using OpenQA.Selenium;
-
-    public partial class CheckBox
+    private bool DetermineIsCheckedAndroid()
     {
-        private bool DetermineIsCheckedAndroid()
+        try
         {
-            try
-            {
-                return this.FindElement(ByExtras.AndroidXamlAutomationId(CheckBoxGlyphName)) != null;
-            }
-            catch (WebDriverException)
-            {
-                return false;
-            }
+            return this.FindElement(ByExtras.AndroidXamlAutomationId(CheckBoxGlyphName)) != null;
         }
+        catch (WebDriverException)
+        {
+            return false;
+        }
+    }
 
-        private bool DetermineIsIndeterminateAndroid()
-        {
-            throw new NotImplementedException(
-                "An implementation for Android has not been implemented yet.");
-        }
+    private bool DetermineIsIndeterminateAndroid()
+    {
+        throw new NotImplementedException(
+            "An implementation for Android has not been implemented yet.");
     }
 }
