@@ -1,0 +1,791 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/legerity-uno/legerity-uno/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "aQqhL/XyKyIoFdRTDH96fi/oByO18ri+nEs/IhkW+tQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.ByExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.ByExtras.html",
+          "hash": "L37m2u8G2mnyOYDtdmHIZ/x0P05ARDiejw7xfOs0B6I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.AppBarButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.AppBarButton.html",
+          "hash": "4W8/xpjhKX8HJKyogHQ09WfwlPm/y/fR8T0zX8fGFKE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.AppBarToggleButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.AppBarToggleButton.html",
+          "hash": "QAlB80ncehYH4QOKMRCdMKFkldKTJwsuIWcSK++qIFQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.Button.html",
+          "hash": "ylo6rlEI9B/tJ1nS6iFf6iCbPoHtgrpNZmJM2+Rv37I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.CheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.CheckBox.html",
+          "hash": "QU9fUsBx0D8fh6MtzOJCYNwBbPf5CJoTfybfakZkyFc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.ComboBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.ComboBox.html",
+          "hash": "j3mIcLeZdNlKMcAiGj2jae/W0rtFIMRRvsFFn+mKago="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.CommandBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.CommandBar.html",
+          "hash": "NIeaw3W1HLOU8shBMWnms6aoH3J3YulfeE8RiA1OlvY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.DatePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.DatePicker.html",
+          "hash": "diVa/B//bGC7S1LTVQ30BpAHazoIFJ616Q54DKW59nc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.HyperlinkButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.HyperlinkButton.html",
+          "hash": "J6xFNqaWvdd6Pk2vOVJZhhZSRM34ECAItJb9huyZG3E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.TextBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.TextBlock.html",
+          "hash": "697aANjQL1douedepv4i8VH98zvPhhyTMqw95Ycsxb4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.TextBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.TextBox.html",
+          "hash": "ES/UjrPMFzhpEJFLrHZudGktLYIi3iok9JSr/wyun6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.TimePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.TimePicker.html",
+          "hash": "o3aiBKQAYNoCnG/rk4enladMEY/bfZPqfUOPtWJmliI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.UnoElementWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.UnoElementWrapper.html",
+          "hash": "bfke8a/qOxqsF3N4pDAPrBiBo3xVzAu7J7PAyWdDk2M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Elements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Elements.html",
+          "hash": "AiFr3Uv0TTJrkR3g9ZfQdkkyPxccr2+G4BFLpQyI8Kc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Extensions.AttributeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Extensions.AttributeExtensions.html",
+          "hash": "3KvQ3+cjHjJq6xuycZTRi7waom04GahR8pPLANyZjB0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Extensions.ElementWrapperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Extensions.ElementWrapperExtensions.html",
+          "hash": "qPc5UrMB3rMonAlgK+aktZNSvBJwUQ7dtsKHBKjSHNc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Extensions.RemoteWebDriverExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Extensions.RemoteWebDriverExtensions.html",
+          "hash": "sJW/hpSy/EBQnjBvdHgGx/DG1mIrB/okE4XyopoDC5U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Extensions.RemoteWebElementExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Extensions.RemoteWebElementExtensions.html",
+          "hash": "D1pwLtDncZRZI+zDUzdQT38omEX/y4E4XMQRfFkgpgM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Extensions.html",
+          "hash": "KsZ/OgMumhH15KxZO+U2/aN+O475DeliibA6kdtgass="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Platform.PlatformIgnoredException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Platform.PlatformIgnoredException.html",
+          "hash": "IF970eGRw5X8BNGZCYMDFSKxL1tXf9L5xU01sNhS2D8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Platform.PlatformTestHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Platform.PlatformTestHelper.html",
+          "hash": "8Ntl+JzQwnMPXwJig0m+Rwb+YN3INA1Efb1AdonfkEE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.Platform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.Platform.html",
+          "hash": "0vQ5PdYt/OMzk4WmFXDf32IotyrCqFiwtjkbpWytJjU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.UnoAppManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.UnoAppManager.html",
+          "hash": "BJ2mTioV5GIxhy2dF1i9pgVkWYDwWAO1a5fS0hJ8De8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.UnoAppManagerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.UnoAppManagerOptions.html",
+          "hash": "gVTNRhnO7RHsbE3s33xu5pOUVpm3vZKDfdkqgacm7Vw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.UnoTestClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.UnoTestClass.html",
+          "hash": "YuD4fiIYaKS8eLFQOedA33hvCc2hM+qBt5a66yUpGLE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Legerity.Uno.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Legerity.Uno.html",
+          "hash": "NfSREgDu3Dd9OIciKuGFExhCuAVikIw9/wt/Y6w/KPU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "anxSEg2VTKVQo8yyQ3PawvWTP1sez+i/i1oe2OKNBY0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "OBhNOFg6vI4IxJmUoz1hg0G1/zAH0ZdfLmDUPDcmrU8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/appbarbutton.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/appbarbutton.html",
+          "hash": "4cBlpr36CXPiA+Gm5DZVuiGRu04icMY2/8p/s8FnMo8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/appbartogglebutton.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/appbartogglebutton.html",
+          "hash": "iFfGCGufcZO2/eQUSdhgZJ7EB6LazNxpWIN3/lmWoHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/button.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/button.html",
+          "hash": "YwMUJQdkm9m4/lJI16exRCEttaVmdlUGmBahDBLvUkQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/checkbox.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/checkbox.html",
+          "hash": "qPkmfYdOHOW2V+QDMM/9QE5s0dY6P9e747dsiaKfvYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/combobox.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/combobox.html",
+          "hash": "NXwlLZcsd4OOpGRWyQS0paxe7U8AxMOaCS1MjMHP9c0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/commandbar.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/commandbar.html",
+          "hash": "5FSdINxfAi7cX6DFqp4hb5oB/4Yb2EO3I6EG3YMsT58="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/datepicker.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/datepicker.html",
+          "hash": "TuTpF7JLbJrxugCIYDksAJyjvoB2dpv9OQp+huGHfEc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/hyperlinkbutton.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/hyperlinkbutton.html",
+          "hash": "vFLc+bQh+bVkmcOScVccaoePV8j18MOjhFW0AkBiHbY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/textblock.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/textblock.html",
+          "hash": "X61Zstp+aMTu9uVvlsKzT3TFchwRVJfBdLv0xwC1Ses="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/textbox.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/textbox.html",
+          "hash": "61/7PsNNjoFYaCQXntkhb6bVMoyYdKr9Pvpe8EbBqSI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/elements/timepicker.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/elements/timepicker.html",
+          "hash": "G3bIcSW0gZ3rjASh3WuE9CKM2A390YkJK9fbI3t5O7g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/faqs.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/faqs.html",
+          "hash": "IeBRvfJYxNenI12JiDR5owmrdRwzK/hTEUcSq01J4qE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/get-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/get-started.html",
+          "hash": "UAFrXFOA4U1jrfupIYCpcSvGgcIWPPcokWSJUDBrSCQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/page-object-pattern.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/page-object-pattern.html",
+          "hash": "7gTmjkjn4rFp2Xhk0UPG+eml2Pli5eT9Zjsti85ss2I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prepare-uno-platform-apps.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prepare-uno-platform-apps.html",
+          "hash": "C3rU2D8mi5+OVn35byhuHvlMzV7fIoLGbRpOlOmrNKY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "aHQFxNsF/1QueLdAkIP3fQw6mdVYIcheUf4Ra7HqX4g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/ui-element-wrappers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/ui-element-wrappers.html",
+          "hash": "D2TxwnU594odgSI6lVuyN1b1/itoENdZu0SabvlYJ2M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProjectBanner.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProjectBanner.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/data.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/data.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/github.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/github.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/love.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/love.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/model.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/model.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/network.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/network.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/page.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/page.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/puzzle.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/puzzle.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/test.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/test.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/validation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/validation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/wrapper.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/wrapper.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/social.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/social.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "aK0jZFcZfB6Q5Br16qlwZktwk89Uf4vqjTBqNLjON90="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "qPi54Fy0AJmrDKBARSMSxJ5Py+3SZzEXhIC+IPj+S94="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 19,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 26,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
