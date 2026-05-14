@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> Legerity for Uno Platform is archived and no longer actively maintained.
+>
+> This repository remains available for reference, but no new features, bug fixes, dependency updates, issue triage, or pull request reviews are planned.
+>
+> The core Legerity project is being continued here:
+>
+> - [Legerity](https://github.com/MADE-Apps/legerity)
+
 <img src="assets/ProjectBanner.png" alt="Legerity for Uno project banner" />
 
 # Legerity for Uno Platform
